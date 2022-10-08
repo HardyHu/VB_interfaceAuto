@@ -86,7 +86,7 @@ def test_ClueDel():
 	assert get_code == 200
 
 if __name__ == '__main__':
-	get_header()
+	# get_header()
 
 	# # 注意global在新建函数内，所以要调用test_ClueSave才能够在这里使用全局变量ids
 	# test_ClueSave()
