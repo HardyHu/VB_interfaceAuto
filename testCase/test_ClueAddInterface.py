@@ -5,8 +5,14 @@ import requests
 import pytest
 import random
 
+'''
+上传前记得修改passwd
+'''
+reqPostUrl = 'http://192.168.3.155:8080/auth/login'
+user = 'huzk'
+passwd = '*****'	# 上传前记得修改
+
 # @pytest.fixture(params=[{"companyName":"Mynameis","name":"Zhaozilong"},{"companyName":"Urnameis","name":"ZhangFei"}])
-# @pytest.fixture()
 def setup():	# request
 	# data = request.param
 	print("测试接口数据已准备")
@@ -17,31 +23,33 @@ def teardown():
 # http://192.168.3.156/prod-api/auth/login
 # 
 def get_header():
-	headers = {
-	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-	"Cookie":"rememberMe=true; Admin-Expires-In=720; username=admin666; password=DZTgg5Lf/mQ9yd6AI+wGYTlkr+YE1KdNkhLaGzgg8H0ZXxn46eB6bjDLIC8rRWMLSo6KtQKxir6+88U48c1nHw=="
-	}
-	datas = {"username":"admin666","password":"xxx","code":"10","uuid":"25203b19c15a458a8b1e2e11f022bfee"}		 # ,"code":"1"
-	url = "http://192.168.3.156/prod-api/auth/login"
-	datas = json.dumps(datas)
-	r = requests.post(url=url,headers=headers,data = datas)
-	print(r.text)
-	# try:
-	# 	token = r.json().get("data").get("access_token")
-	# 	print(token)
-	# # from selenium.common.exceptions import TimeoutException
-	# except requests.exceptions.RequestException as e:
-	# 	print(e)
 	
-	print(r.status_code)
+	# '''
+	# :var code:需通过三方API调取code
+	# :var uuid:与code挂钩的uuid
+	# '''
+
+	headers = {"Content-Type":"application/json;charset=UTF-8"}
+	evalRes,imgid = '2','972eb77f0f854908a4609a178aabf3ef'		# 手动填入 -- 测试
+	data = {}
+	data['username'] = user
+	data['password'] = passwd
+	data['code'] = evalRes
+	data['uuid'] = imgid
+	datas = json.dumps(data)
+	print(datas)
+	r = requests.post(reqPostUrl,headers=headers,data= datas)
+	res = json.loads(r.text)
+	print(res)
+	return res['data']['access_token']
 
 
 
 def test_ClueSave():
 	global CN,N,headers,ids
 	headers = {
-	"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiMjljODM2MjUtOTU1NC00ZWEyLTk0MmQtMmE2YzAyNGE1NWMxIiwidXNlcm5hbWUiOiJodXprIn0.TtBw4P54vMFt-VEXMS_cI5TQ53VfK47q_EiNMeyJoOAHRhXklAKRYWyf0xxEmySc3QpasvK0pSNi9MbQpWpefA",
-	"Cookie":"rememberMe=true; Admin-Expires-In=720; username=admin1; password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiMjljODM2MjUtOTU1NC00ZWEyLTk0MmQtMmE2YzAyNGE1NWMxIiwidXNlcm5hbWUiOiJodXprIn0.TtBw4P54vMFt-VEXMS_cI5TQ53VfK47q_EiNMeyJoOAHRhXklAKRYWyf0xxEmySc3QpasvK0pSNi9MbQpWpefA",
+	"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
+	"Cookie":"rememberMe=true; Admin-Expires-In=720; username=admin1; password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
 	"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
 	"tenantId":"1567682114956627970",
 	"Content-Type":"application/json"
@@ -78,10 +86,10 @@ def test_ClueDel():
 	assert get_code == 200
 
 if __name__ == '__main__':
-	# get_header()
+	get_header()
 
-	# 注意global在新建函数内，所以要调用test_ClueSave才能够在这里使用全局变量ids
-	test_ClueSave()
-	print(f"\r线索添加接口测试正常。\n已返回新建线索的id：{ids}.\t状态：待删除！")
+	# # 注意global在新建函数内，所以要调用test_ClueSave才能够在这里使用全局变量ids
+	# test_ClueSave()
+	# print(f"\r线索添加接口测试正常。\n已返回新建线索的id：{ids}.\t状态：待删除！")
 	# test_ClueDel()
 	# pytest.main()

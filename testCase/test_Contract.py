@@ -36,8 +36,8 @@ class Test_Contract():
 
 	def test_ContractSave(self,demo):
 		headers ={
-		"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiY2Q3MTNhNTYtYTVmOS00ZWQzLTgwNzQtOWJkMDk0YmYzOGU5IiwidXNlcm5hbWUiOiJodXprIn0.-Cj2GvFtGx6qDGymZhozzEkuTuVFIUUNgBYUvPyvZ1O8s6dZcxShzIMKizqaJjGuW5SKuueA7YKxYh2y9V7_3A",
-		"Cookie":"rememberMe=true; Admin-Expires-In=720; username=admin1; password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiY2Q3MTNhNTYtYTVmOS00ZWQzLTgwNzQtOWJkMDk0YmYzOGU5IiwidXNlcm5hbWUiOiJodXprIn0.-Cj2GvFtGx6qDGymZhozzEkuTuVFIUUNgBYUvPyvZ1O8s6dZcxShzIMKizqaJjGuW5SKuueA7YKxYh2y9V7_3A",
+		"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
+		"Cookie":"rememberMe=true; Admin-Expires-In=720; username=admin1; password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
 		"tenantId":"1567682114956627970",
 		"Content-Type":"application/json"
@@ -51,6 +51,7 @@ class Test_Contract():
 		startDate = demo[5]
 
 		data = {
+		"EXO":"古惑仔",
 		"amount": "12000.00",
 		"companySignDate": companySignDate,
 		"companySignatory": "他才是签字人",

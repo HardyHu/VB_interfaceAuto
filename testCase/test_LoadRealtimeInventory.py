@@ -13,31 +13,32 @@ def get_param(request):
 class TestRTInventory():
 	'''
 	用来测试ERP--进销存--及时库存第一页的数据状况
-	param checksize::指定页的数据量，有每页10条/20条/30条...
-	param recordsl::实际去校验，拉取的数据有多少条
+	:param size::指定页的数据量，有每页10条/20条/30条...
+	:param total: 实际去校验，拉取的数据有多少条
+	:param recordsl: 得到拉取的数据长度是多少
 	'''
 	def setup(self):
-		print("初始化OK.")
+		print("\n初始化OK.")
 
 	def teardown(self):
-		print("数据已清理.")
+		print("数据已清理.\n")
 
 	def test_loaddata(self,demo):
 		headers = {
-		"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiY2M5MzRhYjMtMTkwNi00MTFjLThjMTEtZmViZGU1ZjRlY2RjIiwidXNlcm5hbWUiOiJodXprIn0.H2psnQjVEH0XVA1V70da4sDVUTkMEFq6l-K77_m3dCqD0EXrDM_8VvZC-MnBIU2zv-6QJOGUICZDxwYopiotYg",
-		"Cookie":"rememberMe=true; Admin-Expires-In=720; username=admin1; password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiY2M5MzRhYjMtMTkwNi00MTFjLThjMTEtZmViZGU1ZjRlY2RjIiwidXNlcm5hbWUiOiJodXprIn0.H2psnQjVEH0XVA1V70da4sDVUTkMEFq6l-K77_m3dCqD0EXrDM_8VvZC-MnBIU2zv-6QJOGUICZDxwYopiotYg",
+		"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
+		"Cookie":"rememberMe=true; Admin-Expires-In=720; username=admin1; password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
 		"tenantId":"1567682114956627970"
 		}
 		url = "http://192.168.3.156/dev-api/erp/item/stock/list?currentPage=1&currentPageSize=" + demo
-		print(url)
+		# print(url)
 		params = {
 		'currentPage':"1",
 		'currentPageSize':demo
 		}
 		r = requests.get(url=url,headers=headers,params=params)
 		resp = r.text
-		print(resp)
+		# print(resp)
 		respj = json.loads(resp)
 		
 		recordsl = len(respj["data"]["records"])
@@ -46,9 +47,16 @@ class TestRTInventory():
 		else:
 			print(f"recordsl is :{recordsl}")
 			print("请检查测试环境是否出现服务异常，或者数据已经被清理!")	
-		checksize = respj["data"]["size"]
-		print(checksize)
-		assert int(checksize) == recordsl
+		size = respj["data"]["size"]
+		total = respj["data"]["total"]
+		# print(checksize)
+		if size < total and int(demo) == size:
+			print("当前在第一页")
+			assert respj["data"]["current"] == 1
+		else:
+			print(f'We confirmed total = {total}')
+			assert total == recordsl
+		
 
 if __name__ == '__main__':
 	'''
