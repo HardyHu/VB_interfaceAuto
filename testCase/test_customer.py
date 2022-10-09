@@ -14,11 +14,11 @@ import datetime
 t = datetime.datetime.now()
 r1 = random.randint(1000,9001)
 t2 = (t + datetime.timedelta(days = 2)).strftime("%Y-%m-%d %H:%M:%S")
-name = "村头二狗" + t2[:10] + str(r1)
+name = "小明" + t2[:10] + str(r1)
 
 rd = random.sample(range(13),5)
 rstr = "".join(str(i) for i in rd)
-newname = "村头二狗" + rstr
+newname = "XM" + rstr
 
 
 @pytest.fixture(params=[name,name+"A",name+"B",newname],name="demo")
@@ -42,8 +42,8 @@ class Test_Customer():
 	def test_CustomerSave(self,demo):		# ,demo
 		global headers
 		headers ={
-		"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
-		"Cookie":"rememberMe=true; Admin-Expires-In=720; username=huzk; password=Ce8Xk0ifC2xa3pAjSQiX3woOewkWzBDnIqRsrmXdUGHRP9XJoKxDxUfqS/CUcU901BZz5TrPYf2NkDkHUEdaOg==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZjNmZDJiNDYtMjUwNS00YTIxLWIyNTQtMjM2MzRlZTM2NzkxIiwidXNlcm5hbWUiOiJodXprIn0.16DTpPzNr_hz9OCkeVMLXD7XYOmdszS9GvaivYZz_J9Ob97IjfCwtewGMY7qaVClSZFb28Ph0H7tmAP8uWcFew",
+		"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZTRjMTkxZGYtMGNiNS00NTg0LTk2NWUtMDQxNzI5NDJhMGVhIiwidXNlcm5hbWUiOiJodXprIn0.GevqX-eLE4ZNTT1dmZM-qcFfFbvpXeP2cUYymIZEfMSJNzEDav3y2d4WrQJDisXD-qCLuxWRnEjx36PH6bz4Uw",
+		"Cookie":"rememberMe=true; Admin-Expires-In=720; username=huzk; password=Ce8Xk0ifC2xa3pAjSQiX3woOewkWzBDnIqRsrmXdUGHRP9XJoKxDxUfqS/CUcU901BZz5TrPYf2NkDkHUEdaOg==; Admin-Token=eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTksInVzZXJfa2V5IjoiZTRjMTkxZGYtMGNiNS00NTg0LTk2NWUtMDQxNzI5NDJhMGVhIiwidXNlcm5hbWUiOiJodXprIn0.GevqX-eLE4ZNTT1dmZM-qcFfFbvpXeP2cUYymIZEfMSJNzEDav3y2d4WrQJDisXD-qCLuxWRnEjx36PH6bz4Uw",
 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
 		"tenantId":"1567682114956627970",
 		"Content-Type":"application/json"
