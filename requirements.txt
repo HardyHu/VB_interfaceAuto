@@ -3,3 +3,4 @@ pytest
 requests
 selenium
 urllib3
+yagmail

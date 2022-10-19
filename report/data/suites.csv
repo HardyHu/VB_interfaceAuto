@@ -1,0 +1,31 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","0","","test_Tensorflow","Testnewclass","","","test_Jianfa",""
+"passed","Wed Oct 12 10:52:51 CST 2022","Wed Oct 12 10:52:51 CST 2022","1","","test_CSDN","","","","test_Quenendtitle",""
+"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","46","","test_Contract","Test_Contract","","","test_ContractSave[demo0]",""
+"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","219","","test_ClueAddInterface","","","","test_ClueSave[eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2tleSI6IjM3OWU1OWMyLTA1ZWEtNDQwMC1hYzFmLTViZTdlZmIxNTY1OCIsInVzZXJfaWQiOjE1OSwidXNlcm5hbWUiOiJodXprIn0.Vi-1MTiFHeZDRTYHPICjVsSKaSpc8Y6rAZwtjNakH9bQcLiFVdr3J0Oce4vanr_KnIY27EQcAEhCLgei-4CPaQ]",""
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","60","","test_customer","Test_Customer","","","test_CustomerSave[小明2022-10-147029]",""
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","88","","test_Payment","Test_Payment","","","test_PaymentSave[demo1]",""
+"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","88","","test_LoadRealtimeInventory","TestRTInventory","","","test_loaddata[20]","
+		用来测试ERP--进销存--及时库存第一页的数据状况
+		:param size::指定页的数据量，有每页10条/20条/30条...
+		:param total: 实际去校验，拉取的数据有多少条
+		:param recordsl: 得到拉取的数据长度是多少
+
+		"
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:54 CST 2022","40","","test_customer","Test_Customer","","","test_CustomerSave[XM62854]",""
+"passed","Wed Oct 12 10:52:54 CST 2022","Wed Oct 12 10:52:54 CST 2022","13","","test_customer","Test_Customer","","","test_CustomerDel",""
+"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","39","","test_ClueAddInterface","","","","test_ClueDel",""
+"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:53 CST 2022","127","","test_Payment","Test_Payment","","","test_PaymentSave[demo0]",""
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","48","","test_customer","Test_Customer","","","test_CustomerSave[小明2022-10-147029A]",""
+"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","282","","test_LoadRealtimeInventory","TestRTInventory","","","test_loaddata[10]","
+		用来测试ERP--进销存--及时库存第一页的数据状况
+		:param size::指定页的数据量，有每页10条/20条/30条...
+		:param total: 实际去校验，拉取的数据有多少条
+		:param recordsl: 得到拉取的数据长度是多少
+
+		"
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","0","","test_Tensorflow","Testnewclass","","","test_Jiafa",""
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","1","","test_Tensorflow","Testnewclass","","","test_Chenfa",""
+"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","44","","test_Contract","Test_Contract","","","test_ContractSave[demo1]",""
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","46","","test_customer","Test_Customer","","","test_CustomerSave[小明2022-10-147029B]",""
+"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","64","","test_Payment","Test_Payment","","","test_PaymentSave[demo2]",""
