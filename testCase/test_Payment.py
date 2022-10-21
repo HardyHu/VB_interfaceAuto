@@ -65,7 +65,7 @@ class Test_Payment(object):
         data = {
             "amount": "12000.00",
             "contractId": "1574238066577022978",
-            "contractNum": "",
+            "contractNum": "HT2022-10-204896",
             "contractAmount": "10000.00",
             "customerId": "1570238472918695937",  # 张楚岚
             "list": [{
@@ -110,4 +110,4 @@ class Test_Payment(object):
 
 
 if __name__ == '__main__':
-    pytest.main(["-sv", "test_Payment.py"])  # "-x",
+    pytest.main(["-sv", "test_payment.py"])  # "-x",

@@ -1,31 +1,48 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","0","","test_Tensorflow","Testnewclass","","","test_Jianfa",""
-"passed","Wed Oct 12 10:52:51 CST 2022","Wed Oct 12 10:52:51 CST 2022","1","","test_CSDN","","","","test_Quenendtitle",""
-"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","46","","test_Contract","Test_Contract","","","test_ContractSave[demo0]",""
-"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","219","","test_ClueAddInterface","","","","test_ClueSave[eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2tleSI6IjM3OWU1OWMyLTA1ZWEtNDQwMC1hYzFmLTViZTdlZmIxNTY1OCIsInVzZXJfaWQiOjE1OSwidXNlcm5hbWUiOiJodXprIn0.Vi-1MTiFHeZDRTYHPICjVsSKaSpc8Y6rAZwtjNakH9bQcLiFVdr3J0Oce4vanr_KnIY27EQcAEhCLgei-4CPaQ]",""
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","60","","test_customer","Test_Customer","","","test_CustomerSave[小明2022-10-147029]",""
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","88","","test_Payment","Test_Payment","","","test_PaymentSave[demo1]",""
-"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","88","","test_LoadRealtimeInventory","TestRTInventory","","","test_loaddata[20]","
-		用来测试ERP--进销存--及时库存第一页的数据状况
-		:param size::指定页的数据量，有每页10条/20条/30条...
-		:param total: 实际去校验，拉取的数据有多少条
-		:param recordsl: 得到拉取的数据长度是多少
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","0","","test_Tensorflow","Testnewclass","","","test_Chenfa",""
+"skipped","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","0","","test_order","Test_Order","","","test_orderDel",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","29","","test_payment","Test_Payment","","","test_PaymentSave[demo1]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","29","","test_quote","Test_Quote","","","test_quotesave[demo0]",""
+"skipped","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","0","","test_ClueInterface","","","","test_ClueDel",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","23","","test_invoice","Test_Invoice","","","test_invoiceSave[2022-10-22T23:00:00.000Z]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","30","","test_contract","Test_Contract","","","test_contractSave[demo2]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","0","","test_Tensorflow","Testnewclass","","","test_Jiafa",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","36","","test_contract","Test_Contract","","","test_contractSave[demo0]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","33","","test_quote","Test_Quote","","","test_quotesave[demo3]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","35","","test_order","Test_Order","","","test_order_save[demo1]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","37","","test_customer","Test_Customer","","","test_CustomerSave[demo1]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","41","","test_ClueInterface","","","","test_ClueSave",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","1","","test_Tensorflow","Testnewclass","","","test_Jianfa",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","1","","test_customer","Test_Customer","","","test_CustomerDel",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","21","","test_invoice","Test_Invoice","","","test_invoiceSave[2022-10-23T23:00:00.000Z]",""
+"passed","Fri Oct 21 15:29:19 CST 2022","Fri Oct 21 15:29:20 CST 2022","418","","test_CSDN","","","","test_Quenendtitle",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","29","","test_quote","Test_Quote","","","test_quotesave[demo2]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","27","","test_quote","Test_Quote","","","test_quotesave[demo4]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","38","","test_order","Test_Order","","","test_order_save[demo0]",""
+"skipped","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","0","","test_quote","Test_Quote","","","test_quotedel",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","31","","test_payment","Test_Payment","","","test_PaymentSave[demo2]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","27","","test_customer","Test_Customer","","","test_CustomerSave[demo2]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","56","","test_contract","Test_Contract","","","test_contractSave[demo1]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","23","","test_payment","Test_Payment","","","test_PaymentSave[demo0]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","185","","test_LoadRealtimeInventory","TestRTInventory","","","test_loaddata[10]","
+        用来测试ERP--进销存--及时库存第一页的数据状况
+        :param demo:定义每页的大小
+        size::指定页的数据量，有每页10条/20条/30条...
+        total: 实际去校验，拉取的数据有多少条
+        recordsl: 得到拉取的数据长度是多少
 
-		"
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:54 CST 2022","40","","test_customer","Test_Customer","","","test_CustomerSave[XM62854]",""
-"passed","Wed Oct 12 10:52:54 CST 2022","Wed Oct 12 10:52:54 CST 2022","13","","test_customer","Test_Customer","","","test_CustomerDel",""
-"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","39","","test_ClueAddInterface","","","","test_ClueDel",""
-"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:53 CST 2022","127","","test_Payment","Test_Payment","","","test_PaymentSave[demo0]",""
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","48","","test_customer","Test_Customer","","","test_CustomerSave[小明2022-10-147029A]",""
-"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","282","","test_LoadRealtimeInventory","TestRTInventory","","","test_loaddata[10]","
-		用来测试ERP--进销存--及时库存第一页的数据状况
-		:param size::指定页的数据量，有每页10条/20条/30条...
-		:param total: 实际去校验，拉取的数据有多少条
-		:param recordsl: 得到拉取的数据长度是多少
+        "
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","22","","test_invoice","Test_Invoice","","","test_invoiceSave[2022-10-21T15:29:19.000Z]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","34","","test_order","Test_Order","","","test_order_save[demo2]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","27","","test_customer","Test_Customer","","","test_CustomerSave[demo3]",""
+"passed","Fri Oct 21 15:29:23 CST 2022","Fri Oct 21 15:29:23 CST 2022","45","","test_quote","Test_Quote","","","test_quotesave[demo1]",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:23 CST 2022","2061","","test_invoice","Test_Invoice","","","test_invoiceDel",""
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","182","","test_LoadRealtimeInventory","TestRTInventory","","","test_loaddata[20]","
+        用来测试ERP--进销存--及时库存第一页的数据状况
+        :param demo:定义每页的大小
+        size::指定页的数据量，有每页10条/20条/30条...
+        total: 实际去校验，拉取的数据有多少条
+        recordsl: 得到拉取的数据长度是多少
 
-		"
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","0","","test_Tensorflow","Testnewclass","","","test_Jiafa",""
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","1","","test_Tensorflow","Testnewclass","","","test_Chenfa",""
-"passed","Wed Oct 12 10:52:52 CST 2022","Wed Oct 12 10:52:52 CST 2022","44","","test_Contract","Test_Contract","","","test_ContractSave[demo1]",""
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","46","","test_customer","Test_Customer","","","test_CustomerSave[小明2022-10-147029B]",""
-"passed","Wed Oct 12 10:52:53 CST 2022","Wed Oct 12 10:52:53 CST 2022","64","","test_Payment","Test_Payment","","","test_PaymentSave[demo2]",""
+        "
+"passed","Fri Oct 21 15:29:20 CST 2022","Fri Oct 21 15:29:20 CST 2022","32","","test_customer","Test_Customer","","","test_CustomerSave[demo0]",""

@@ -4,34 +4,37 @@
 开票的增删改查，
 初期仅实现对新建和删除的用例校验
 """
+import datetime
+import json
+import random
+import time
 import pytest
 import requests
-import json
-import datetime
-import random
 
-global order_newlist
+global new_list
 
-t2 = datetime.datetime.now()
-t2 = t2.strftime("%Y-%m-%d %H:%M:%S")
-t = t2[:10] + "T" + t2[11:] + ".000Z"
+new_list = []
 
-newt = datetime.datetime.now()
-t1 = (newt + datetime.timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
-dtjoin1 = t1[:10] + "T23:00:00.000Z"
 
-t3 = (newt + datetime.timedelta(days=2)).strftime("%Y-%m-%d %H:%M:%S")
-dtjoin2 = t3[:10] + "T23:00:00.000Z"
+now_time = datetime.datetime.now()
+time_str = now_time.strftime("%Y-%m-%d %H:%M:%S")
+t = time_str[:10] + "T" + time_str[11:] + ".000Z"
+
+t_one = (now_time + datetime.timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
+time_joinOne = t_one[:10] + "T23:00:00.000Z"
+
+t_two = (now_time + datetime.timedelta(days=2)).strftime("%Y-%m-%d %H:%M:%S")
+time_joinTwo = t_two[:10] + "T23:00:00.000Z"
 
 with open('access_token.txt', 'r') as f:
     get_token = f.read()
 get_token = get_token.strip()
 
 
-@pytest.fixture(params=[t, dtjoin1, dtjoin2], name="demo")
+@pytest.fixture(params=[t, time_joinOne, time_joinTwo], name="demo")
 def ready(request):
     """
-    需要参数化：dtjoin1，mynum，dtjoin2
+    需要参数化：t, time_joinOne, time_joinTwo
     """
     yield request.param
 
@@ -44,16 +47,16 @@ class Test_Invoice(object):
         print('测试用例已结束')
 
     @pytest.mark.flaky(reruns=2, reruns_delay=2)
-    def test_invoicesave(self, demo):  # , demo
+    def test_invoiceSave(self, demo):  # , demo
         global headers
         Authorization = 'Bearer ' + get_token
         Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \
-                 'password=Ce8Xk0ifC2xa3pAjSQiX3woOewkWzBDnIqRsrmXdUGHRP9XJoKxDxUfqS/CUcU901BZz5TrPYf2NkDkHUEdaOg==; ' \
+                 'password=xxx==; ' \
                  'Admin-Token=' + get_token
         headers = {
             "Authorization": Authorization,
             "Cookie": Cookie,
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36"
                           "Chrome/103.0.0.0 Safari/537.36",
             "tenantId": "1567682114956627970",
             "Content-Type": "application/json"
@@ -77,46 +80,32 @@ class Test_Invoice(object):
             "orderNo": "XS202210140027",
             "phone": "0755-626626",
             "remark": "祝大家都发财、有福气、心情愉快、事业有成、家族兴旺、婚姻美满、福如东海、前途似锦！",
-            "rise": "woqu66668888",
+            "rise": "woWu66668888",
             "riseType": 1,
             "status": 1,
             "type": 1
         }
         r = requests.post(url=save_url, headers=headers, data=json.dumps(data))
-        resp = r.text
         print("********************")
-        print(resp)
-        invoice_id = json.loads(resp)['data']
-        order_newlist = []
-        order_newlist.append(invoice_id)
+        print(r.text)
+        invoice_id = json.loads(r.text)['data']
+        new_list.append(invoice_id)
+        assert json.loads(r.text)["code"] == 200
 
-        assert json.loads(resp)["code"] == 200
-
-    @pytest.mark.skip()
-    def test_invoicedel(self):
-        global idsdel1, idsdel2
+    # @pytest.mark.skip()
+    def test_invoiceDel(self):
         del_url = 'http://192.168.3.156/dev-api/crm/invoice/delete'
-        if len(order_newlist) >= 3:
-            idsdel1 = order_newlist[1]
-            idsdel2 = order_newlist[2]
-        data = {
-            "ids": [idsdel1]
-        }
-        rone = requests.post(url=del_url, headers=headers, data=json.dumps(data))
-        if idsdel1:
-            print("用例：test_invoicedel 第一次")
-            assert json.loads(rone.text)['code'] == 200
-        data = {
-            "ids": [idsdel2]
-        }
 
-        rtwo = requests.post(url=del_url, headers=headers, data=json.dumps(data))
-        if idsdel2:
-            print("用例：test_invoicedel 第二次")
-            assert json.loads(rtwo.text)['code'] == 200
-            print(rtwo.text, 'Check Over!')
+        print(new_list)
+        for content in new_list[-2:]:  # 取倒数三个数据进行删除操作
+            data = {
+                "ids": [content]
+            }
+            time.sleep(1)
+            resp = requests.post(url=del_url, headers=headers, data=json.dumps(data))
+            assert resp.json()['code'] == 200  # json.loads(resp.text)
 
 
 if __name__ == '__main__':
     """-rs : Show skipped"""
-    pytest.main(['-rsvx', 'test_invoice.py'])
+    pytest.main(['-svx', 'test_invoice.py'])

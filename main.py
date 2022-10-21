@@ -1,4 +1,4 @@
-# 这是一个示例 Python 脚本。
+# -*- utf-8 -*-
 
 __Author__ = "Huzk"
 
@@ -14,6 +14,9 @@ import yagmail
 user = 'king917619381@vip.qq.com'
 password = 'kbgopsvwjhunbaih'  # QQMail授权码
 
+def execute_bat_file():
+    os.system('ExcPy.bat')       # tmp.bat
+    # quit()
 
 # 压缩文件
 def zipDir(dirpath, ziphere):
@@ -71,8 +74,8 @@ def rollWord():
 
 # 按间距中的绿色按钮以运行脚本。
 if __name__ == '__main__':
-    # rollWord()
-
+    # execute_bat_file()
+    #
     # 目标：自动执行.bat脚本，并打包结果，最终发送邮件
     # os.system("D:\\xxx1\\xxx2XMLnew\\otr.bat ")   # 执行脚本，跑完代码，并生成报告(推荐使用os.path.join)
     zipDir("E:\\Veiban Project\\report", r"E:\Users\Administrator\Desktop\report.zip")
@@ -86,10 +89,9 @@ if __name__ == '__main__':
     salt = str(uuid.uuid4())
     # 发送带附件的邮件，最后1个参数为附件地址
     # 接收邮件的邮箱和附件地址可以为列表，即发送给多个邮箱，发送多个附件
-    recieve_address = '1151132197@qq.com'
+    recieve_address = ['1151132197@qq.com','mxc@epipe.com.cn']
     yag.send(recieve_address, 'CRM系统自动化报告' + salt, contents, [r"E:\Users\Administrator\Desktop\report.zip"])
     print('发送动作已完成！')
 
-    # pytest.main(['-sqx','test_invoice.py'])  # ['-sqx','']
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助

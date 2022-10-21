@@ -14,18 +14,23 @@ import requests
 url = "http://192.168.3.156/dev-api/crm/contract/save"
 t = time.localtime()
 t2 = time.strftime("%Y-%m-%d %H:%M:%S", t)[:10]
-ttodate = t2 + "T16:00:00.000Z"
-intr = random.randint(1000, 5001)
-randomHTName = "Automatic." + str(intr)
+right_date = t2 + "T16:00:00.000Z"
+int_r = random.randint(1000, 5001)
+randomHTName = "Automatic." + str(int_r)
 with open('access_token.txt', 'r') as f:
     get_token = f.read()
 get_token = get_token.strip()
-print('\nget_token = {}'.format(get_token))
 
 
-@pytest.fixture(params=[[ttodate, ttodate, randomHTName, "你当我是备注吧", "备注皆因为我害怕的条款", ttodate],
-                        [ttodate, ttodate, randomHTName + "R", "你当我是666吧", "666皆因为888a条款", ttodate]],
-                name="demo")
+@pytest.fixture(
+    params=[
+        [right_date, right_date, randomHTName, "你当我是备注吧", "备注皆因为我害怕的条款", right_date,
+         "HT" + t2 + str(int_r)],
+        [right_date, right_date, randomHTName + "R", "你当我是666吧", "666皆因为888a条款", right_date,
+         "HT" + t2 + str(int_r)],
+        [right_date, right_date, randomHTName + "A", "你当我是666吧", "remark~!@#$%^&*", right_date,
+         "HT" + t2 + str(int_r)]],
+    name="demo")
 def ready(request):
     """
     需要参数化：companySignDate，customerSignDate，name，
@@ -41,15 +46,15 @@ class Test_Contract:
     def teardown(self):
         print('测试用例已结束')
 
-    def test_ContractSave(self, demo):
+    def test_contractSave(self, demo):
         Authorization = 'Bearer ' + get_token
         Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \
-                 'password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; ' \
+                 'password=XXX==; ' \
                  'Admin-Token=' + get_token
         headers = {
             "Authorization": Authorization,
             "Cookie": Cookie,
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 "
                           "Chrome/103.0.0.0 Safari/537.36",
             "tenantId": "1567682114956627970",
             "Content-Type": "application/json"
@@ -61,6 +66,7 @@ class Test_Contract:
         remark = demo[3]
         specialTerms = demo[4]
         startDate = demo[5]
+        number = demo[-1]
 
         data = {
             "EXO": "古惑仔",
@@ -82,6 +88,7 @@ class Test_Contract:
                 "county": "河东区",
                 "address": "三十年河东"
             }],
+            "number": number,
             "name": name,
             "paymentMode": 2,
             "receiveList": [{
@@ -109,4 +116,4 @@ class Test_Contract:
 
 
 if __name__ == '__main__':
-    pytest.main(["-s", "-vx", "test_Contract.py"])  # ,"-x"
+    pytest.main(["-s", "-vx", "test_contract.py"])  # ,"-x"

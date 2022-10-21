@@ -14,6 +14,7 @@ headers = {
 	'user-agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
 }
 article_url = 'https://blog.csdn.net/qq_17195161/article/details/126322450'
+article_url_backup = 'https://blog.csdn.net/qq_17195161/article/details/127420365'
 
 
 def title_output():
@@ -25,15 +26,15 @@ def title_output():
 	return bs.title.text
 
 def request_imparticle():
-	for i in range(8081):
+	for i in range(3):
 		s = requests.session()
 		# 设置连接活跃状态为False
 		s.keep_alive = False
-		sleeptime = random.randint(2,7)
+		sleeptime = random.randint(2,6)
 		print(f'此次休眠预备时长：{sleeptime}')
-		response = requests.get(article_url, headers=headers, timeout=100)
+		response = requests.get(article_url_backup, headers=headers, timeout=100)
 		if response.status_code == 200:
-			print(response.text[-39:],end=' ')
+			print(response.text[-36:],end=' ')
 			print(f'第{i+1}次访问成功！\n')
 		time.sleep(sleeptime)
 		response.close()
@@ -44,8 +45,8 @@ def test_Quenendtitle():
 	assert  "开河大大的博客_CSDN博客-自动化," in title_output()
 
 if __name__ == "__main__":
-	# pytest.main(['-svx','test_CSDN.py'])
+	pytest.main(['-svx','test_CSDN.py'])
 
-    request_imparticle()
+    # request_imparticle()
 
-    print(title_output())
+    # print(test_Quenendtitle())

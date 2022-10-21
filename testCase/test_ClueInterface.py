@@ -5,25 +5,14 @@ import requests
 import pytest
 import random
 
-'''
-上传前记得修改passwd
-'''
-reqPostUrl = 'http://192.168.3.155:8080/auth/login'
-user = 'huzk'
-passwd = '*****'  # 上传前记得修改
-
 url = "http://192.168.3.156/dev-api/crm/clue/save"
-intr = random.randint(10000, 15000)
+int_r = random.randint(10000, 15000)
 with open('access_token.txt', 'r') as f:
     get_token = f.read()
 get_token = get_token.strip()
-# print('\nget_token = {}'.format(get_token))
 
 
-# @pytest.fixture(params=[get_token], name="demo")
-def setup():  # request
-    # print(request.param)
-    # yield request.param
+def setup():
     print("测试接口数据已准备")
 
 
@@ -31,49 +20,54 @@ def teardown():
     print("测试数据已经全部清除")
 
 
-def test_ClueSave():        # demo
-    global CN, N, headers, ids
+def test_ClueSave():  # demo
+    global headers, ids, clueList
+    clueList = []
     Authorization = 'Bearer ' + get_token
     Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \
-             'password=gYxS3/mkNjn/DS352bZmHQDB8abWFrg4GbfjIDtuMqRXm30A0ENkMUa9DgEBJDP/TfqCzzyXnYFyxZHgxNUeNQ==; ' \
+             'password=xxxx==; ' \
              'Admin-Token=' + get_token
-    print('\n' + Authorization)
+    # print('\n' + Authorization)
     headers = {
         "Authorization": Authorization,
         "Cookie": Cookie,
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 "
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 Chrome/103.0.0.0 "
                       "Safari/537.36",
         "tenantId": "1567682114956627970",
         "Content-Type": "application/json"
     }
 
-    CN = "Autotest." + str(intr) + " Company"
-    N = "XAutotest." + str(intr)
-    data = {"companyName": CN, "name": N, "status": 1}  # ,"status": 1
-    # print(data)
-    data = json.dumps(data)  # 类型转换
-    r = requests.post(url=url, headers=headers, data=data)  # request.param
+    CN = "test." + str(int_r) + " Company"
+    N = "Xtest." + str(int_r)
+    for i in range(2):
+        data = {"companyName": CN, "name": N + str(i), "status": 1}
+        # print(data)
+        r = requests.post(url=url, headers=headers, data=json.dumps(data))  # request.param
 
-    resp = r.text
-    # ids = json.loads(resp)["data"]
-    ids = r.json().get("data")
-    print(f"接口响应值为{resp}")
+        resp = r.text
+        # ids = json.loads(resp)["data"]
+        ids = r.json().get("data")
+        clueList.append(ids)
+        print(f"接口响应内容为{resp}")
 
-    respCode = json.loads(resp)["code"]
-    print(f"接口内的状态码为{respCode}")
-    assert respCode == 200
+        respCode = json.loads(resp)["code"]
+        print(f"接口内的状态码为{respCode}")
+        assert respCode == 200
+    print(clueList)
+
 
 @pytest.mark.skip(reason='不想删除。。。。')
 def test_ClueDel():
     # print(f"CN is:{CN}")
     del_url = "http://192.168.3.156/dev-api/crm/clue/delete"
-    data = {"ids": [ids]}
-    # 1572412561666162689
-    r = requests.post(url=del_url, headers=headers, data=json.dumps(data))
-    print(f"接口响应值为{r.text}")
-    get_code = json.loads(r.text)["code"]
-    print(f"接口内的状态码为{get_code}")
-    assert get_code == 200
+    if len(clueList) >= 2:
+        for i in range(len(clueList)):
+            data = {"ids": [clueList[i]]}
+            r = requests.post(url=del_url, headers=headers, data=json.dumps(data))
+            print(f"删除接口响应为{r.text}")
+            get_code = json.loads(r.text)["code"]
+            print(f"接口内的状态码为{get_code}")
+            assert get_code == 200
 
 
 if __name__ == '__main__':
