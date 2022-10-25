@@ -45,7 +45,7 @@ class Test_Customer:
     def teardown(self):
         print('测试用例已结束')
 
-    def test_CustomerSave(self, demo):  # ,demo
+    def test_customerSave(self, demo):  # ,demo
         # global headers
         Authorization = 'Bearer ' + get_token
         Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1;' \

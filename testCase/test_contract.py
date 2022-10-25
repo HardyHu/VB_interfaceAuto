@@ -4,6 +4,7 @@
 合同的增删改查，
 初期仅实现对新建和删除的用例校验
 """
+import datetime
 import json
 import random
 import time
@@ -15,6 +16,10 @@ url = "http://192.168.3.156/dev-api/crm/contract/save"
 t = time.localtime()
 t2 = time.strftime("%Y-%m-%d %H:%M:%S", t)[:10]
 right_date = t2 + "T16:00:00.000Z"
+dateT = datetime.datetime.now()
+t_two = (dateT + datetime.timedelta(days=2)).strftime("%Y-%m-%d %H:%M:%S")
+customerDate = t_two[:10] + "T23:00:00.000Z"
+
 int_r = random.randint(1000, 5001)
 randomHTName = "Automatic." + str(int_r)
 with open('access_token.txt', 'r') as f:
@@ -24,12 +29,12 @@ get_token = get_token.strip()
 
 @pytest.fixture(
     params=[
-        [right_date, right_date, randomHTName, "你当我是备注吧", "备注皆因为我害怕的条款", right_date,
+        [right_date, customerDate, randomHTName, "你当我是备注吧", "备注皆因为我害怕的条款", right_date,
          "HT" + t2 + str(int_r)],
-        [right_date, right_date, randomHTName + "R", "你当我是666吧", "666皆因为888a条款", right_date,
-         "HT" + t2 + str(int_r)],
+        [right_date, customerDate, randomHTName + "R", "你当我是666吧", "666皆因为888a条款", right_date,
+         "HT" + t2 + str(int_r) + "R"],
         [right_date, right_date, randomHTName + "A", "你当我是666吧", "remark~!@#$%^&*", right_date,
-         "HT" + t2 + str(int_r)]],
+         "HT" + t2 + str(int_r) + "A"]],
     name="demo")
 def ready(request):
     """
@@ -66,7 +71,7 @@ class Test_Contract:
         remark = demo[3]
         specialTerms = demo[4]
         startDate = demo[5]
-        number = demo[-1]
+        number = demo[-1]  # 合同编号
 
         data = {
             "EXO": "古惑仔",
@@ -91,6 +96,7 @@ class Test_Contract:
             "number": number,
             "name": name,
             "paymentMode": 2,
+            "rate": 1,
             "receiveList": [{
                 "province": "湖北省",
                 "city": "黄冈市",

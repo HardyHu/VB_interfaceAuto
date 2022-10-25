@@ -13,7 +13,7 @@
     </parameter>
         <parameter>
         <key>ApiUrl</key>
-        <value>127.0.0.1/login</value>
+        <value>http://192.168.3.169:9804/swagger-ui/index.html#</value>
     </parameter>
         <parameter>
         <key>python.Version</key>

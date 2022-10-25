@@ -1,17 +1,17 @@
 {
-  "name": "iTesting",
+  "name": "Learning",
 
-  "type": "Jenkins",
+  "type": "CSDN",
 
-  "url": "http://helloqa.com",
+  "url": "https://blog.csdn.net/qq_17195161",
 
   "buildOrder": 3,
 
-  "buildName": "allure-report_deploy#1",
+  "buildName": "No build but Crawlers",
 
-  "buildUrl": "http://helloqa.com#1",
+  "buildUrl": "https://blog.csdn.net/qq_17195161/article/details/127420365",
 
-  "reportUrl": "http://helloqa.com#1/AllureReport",
+  "reportUrl": "https://blog.csdn.net/qq_17195161/article/details/126322450",
 
-  "reportName": "iTesting Allure Report"
+  "reportName": "Learning Pytest Online"
 }

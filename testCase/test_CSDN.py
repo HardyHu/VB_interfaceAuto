@@ -26,7 +26,7 @@ def title_output():
 	return bs.title.text
 
 def request_imparticle():
-	for i in range(3):
+	for i in range(8081):
 		s = requests.session()
 		# 设置连接活跃状态为False
 		s.keep_alive = False
@@ -45,8 +45,8 @@ def test_Quenendtitle():
 	assert  "开河大大的博客_CSDN博客-自动化," in title_output()
 
 if __name__ == "__main__":
-	pytest.main(['-svx','test_CSDN.py'])
+	# pytest.main(['-svx','test_CSDN.py'])
 
-    # request_imparticle()
+    request_imparticle()
 
     # print(test_Quenendtitle())

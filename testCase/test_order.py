@@ -69,7 +69,7 @@ class Test_Order(object):
                 "contractNumber": "HT202209240010",
                 "customerId": 1570601452197924866,  # 戚继光
                 "discount": 90.00,
-                "invoiceAddressId": 0,
+                "invoiceAddressId": 1581908605537906689,
                 "orderDetailList": [
                     {
                         "amount": 1000000.00,
@@ -238,7 +238,7 @@ class Test_Order(object):
                     }
                 ],
                 "placeOrderDate": placeOrderDate,
-                "receiveAddressId": 0,
+                "receiveAddressId": 1581908605542100993,
                 "remark": r"九折带5\|/",
                 "status": 1
                 }

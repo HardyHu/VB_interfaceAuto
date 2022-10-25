@@ -45,8 +45,8 @@ if __name__ == '__main__':
     #     xxx = True
 
     # 拿到登录token，并写入指定文件
-    result = 12
-    imgid = '40e03c36c69b456e8842230a46940b7c'
+    result = 0
+    imgid = 'ace94780f97f4f5c8035ed1c5d02e707'
     get_token = login_auth(result, imgid)
     with open('access_token.txt', 'w') as f:
         f.write(get_token)
