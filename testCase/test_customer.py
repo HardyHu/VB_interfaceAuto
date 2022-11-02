@@ -33,7 +33,6 @@ def ready(request):
     需要参数化：paymentPlaneDate1，paymentPlaneDate2，remark，
         paymentDate，employeeNum
     """
-
     yield request.param
 
 
@@ -48,13 +47,14 @@ class Test_Customer:
     def test_customerSave(self, demo):  # ,demo
         # global headers
         Authorization = 'Bearer ' + get_token
-        Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1;' \
-                 ' password=xxx==; Admin-Token=' + get_token
+        print(f'{Authorization=}')
+        Cookie = 'rememberMe=true; Admin-Expires-In=1440; username=admin1;' \
+                 ' password=xxx==; Admin-Token=' + get_token  # + '; Old-Token=' + old_token
         headers = {
             "Authorization": Authorization,
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1567682114956627970",
+            "tenantId": "1573493506460860417",
             "Content-Type": "application/json"
         }
         url = "http://192.168.3.156/dev-api/crm/customer/save"
@@ -83,6 +83,7 @@ class Test_Customer:
             ],
             "level": 1,
             "name": createName,
+            "owner":"13636035190",
             "phone": "",
             "receiveList": [
                 {
@@ -116,6 +117,4 @@ class Test_Customer:
 
 
 if __name__ == '__main__':
-    # Test_Customer().test_CustomerSave()
-    # Test_Customer().test_CustomerDel()
     pytest.main(["-sqx", "test_customer.py"])

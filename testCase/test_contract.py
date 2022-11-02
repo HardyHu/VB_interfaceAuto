@@ -25,6 +25,9 @@ randomHTName = "Automatic." + str(int_r)
 with open('access_token.txt', 'r') as f:
     get_token = f.read()
 get_token = get_token.strip()
+# with open('old_token.txt', 'r') as file:
+#     another_token = file.read()
+# another_token = another_token.strip()
 
 
 @pytest.fixture(
@@ -53,18 +56,18 @@ class Test_Contract:
 
     def test_contractSave(self, demo):
         Authorization = 'Bearer ' + get_token
-        Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \
-                 'password=XXX==; ' \
-                 'Admin-Token=' + get_token
+        Cookie = 'rememberMe=true; Admin-Expires-In=1440; username=admin1; ' \
+                 'password=XXXo555; ' \
+                 'Admin-Token=' + get_token  # + '; Old-Token=' + another_token
+        # print(Cookie)
         headers = {
             "Authorization": Authorization,
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 "
                           "Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1567682114956627970",
+            "tenantId": "1573493506460860417",
             "Content-Type": "application/json"
         }
-
         companySignDate = demo[0]
         customerSignDate = demo[1]
         name = demo[2]
@@ -108,7 +111,8 @@ class Test_Contract:
             "specialTerms": specialTerms,
             "startDate": startDate,
             "status": 1,
-            "quoteId": 1573509794071429122
+            "owner": '13636035190',
+            "quoteId": 1584473343174139906
         }
         # print(data)
         data = json.dumps(data)
@@ -122,4 +126,4 @@ class Test_Contract:
 
 
 if __name__ == '__main__':
-    pytest.main(["-s", "-vx", "test_contract.py"])  # ,"-x"
+    pytest.main(["-s", "-qx", "test_contract.py"])  # ,"-sqx"

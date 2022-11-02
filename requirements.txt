@@ -1,6 +1,7 @@
 allure-pytest
-pytest
-requests
-selenium
+pytest~=7.1.2
+requests~=2.28.1
+selenium~=4.4.3
 urllib3
-yagmail
+yagmail~=0.15.293
+beautifulsoup4~=4.11.1

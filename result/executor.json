@@ -7,11 +7,11 @@
 
   "buildOrder": 3,
 
-  "buildName": "No build but Crawlers",
+  "buildName": "allure-report_deploy#1",
 
-  "buildUrl": "https://blog.csdn.net/qq_17195161/article/details/127420365",
+  "buildUrl": "http://blog.csdn.net/qq_17195161/article/details/127420365",
 
-  "reportUrl": "https://blog.csdn.net/qq_17195161/article/details/126322450",
+  "reportUrl": "http://blog.csdn.net/qq_17195161/article/details/126322450",
 
   "reportName": "Learning Pytest Online"
 }

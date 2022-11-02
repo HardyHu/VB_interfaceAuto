@@ -1,1 +1,1 @@
-[{"name":"iTesting","type":"Jenkins","url":"http://helloqa.com","buildOrder":3,"buildName":"allure-report_deploy#1","buildUrl":"http://helloqa.com#1","reportName":"iTesting Allure Report","reportUrl":"http://helloqa.com#1/AllureReport"}]
+[{"name":"Learning","type":"CSDN","url":"https://blog.csdn.net/qq_17195161","buildOrder":3,"buildName":"allure-report_deploy#1","buildUrl":"http://blog.csdn.net/qq_17195161/article/details/127420365","reportName":"Learning Pytest Online","reportUrl":"http://blog.csdn.net/qq_17195161/article/details/126322450"}]

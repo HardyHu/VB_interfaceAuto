@@ -51,7 +51,7 @@ class Test_Payment(object):
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
                           "Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1567682114956627970",
+            "tenantId": "1573493506460860417",
             "Content-Type": "application/json"
         }
         url = "http://192.168.3.156/dev-api/crm/payment/save"
@@ -106,7 +106,7 @@ class Test_Payment(object):
         print(resp)
         code = json.loads(resp)["code"]
 
-        assert code == 200
+        assert code == 200  # 200
 
 
 if __name__ == '__main__':

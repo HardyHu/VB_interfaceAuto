@@ -5,7 +5,7 @@
     </parameter>
     <parameter>
         <key>Browser.Version</key>
-        <value>103.0.5060.114</value>
+        <value>103.0.5060.114(32bits)</value>
     </parameter>
     <parameter>
         <key>Stand</key>
@@ -13,7 +13,7 @@
     </parameter>
         <parameter>
         <key>ApiUrl</key>
-        <value>http://192.168.3.169:9804/swagger-ui/index.html#</value>
+        <value>http://192.168.3.190:9804/swagger-ui/index.html</value>
     </parameter>
         <parameter>
         <key>python.Version</key>
