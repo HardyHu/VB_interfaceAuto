@@ -65,7 +65,7 @@ class Test_Contract:
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 "
                           "Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1573493506460860417",
+            "tenantId": "1586979014478311425",
             "Content-Type": "application/json"
         }
         companySignDate = demo[0]
@@ -82,13 +82,13 @@ class Test_Contract:
             "companySignDate": companySignDate,
             "companySignatory": "他才是签字人",
             "currency": "rmb",
-            "customerId": "1570601452197924866",
+            "customerId": "1588101817390718978",    # tenantId下的客户
             "customerSignDate": customerSignDate,
             "customerSignatory": "我不是签字人",
             "endDate": "2034-10-01T16:00:00.000Z",
             "fileList": [{
-                "name": "allure报告思路.png",
-                "url": "http://192.168.3.156:9000/hh-wb/crm/test/20220924/1664005788312.png",
+                "name": "率土之滨.png",
+                "url": "http://192.168.3.156:9000/hh-wb/crm/test/20221107/1667800266244.png",
             }],
             "invoiceList": [{
                 "province": "天津市",

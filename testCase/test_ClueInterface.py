@@ -27,13 +27,12 @@ def test_ClueSave():  # demo
     Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \
              'password=xxxx==; ' \
              'Admin-Token=' + get_token
-    # print('\n' + Authorization)
     headers = {
         "Authorization": Authorization,
         "Cookie": Cookie,
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 Chrome/103.0.0.0 "
                       "Safari/537.36",
-        "tenantId": "1567682114956627970",
+        "tenantId": "1586979014478311425",
         "Content-Type": "application/json"
     }
 
@@ -56,7 +55,7 @@ def test_ClueSave():  # demo
     print(clueList)
 
 
-@pytest.mark.skip(reason='不想删除。。。。')
+# @pytest.mark.skip(reason='不想删除。。。。')
 def test_ClueDel():
     # print(f"CN is:{CN}")
     del_url = "http://192.168.3.156/dev-api/crm/clue/delete"

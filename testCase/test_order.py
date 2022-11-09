@@ -46,7 +46,7 @@ class Test_Order(object):
     def teardown(self):
         print('测试用例已结束')
 
-    @pytest.mark.flaky(reruns=2, reruns_delay=2)
+    # @pytest.mark.flaky(reruns=2, reruns_delay=2)
     def test_order_save(self, demo):
         Authorization = 'Bearer ' + get_token
         Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \
@@ -57,7 +57,7 @@ class Test_Order(object):
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 "
                           "Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1573493506460860417",
+            "tenantId": "1586979014478311425",
             "Content-Type": "application/json"
         }
         save_url = 'http://192.168.3.156/dev-api/crm/order/save'
@@ -65,11 +65,12 @@ class Test_Order(object):
         mynum = demo[1]
         placeOrderDate = demo[0]
         data = {"amount": 9900000.00,
-                "contractId": 1573601475999346690,
+                "contractId": 1589505721424744450,  # 不同租户的合同需要替换掉,名:wsht_010
+                # "name": "合同test010","number": "wsht_010",
                 "contractNumber": "HT202209240010",
-                "customerId": 1570601452197924866,  # 戚继光
+                "customerId": 1589546364977074177,  # "name":Tester13090875
                 "discount": 90.00,
-                "invoiceAddressId": 1581908605537906689,
+                "invoiceAddressId": 1589546365048377346,  # 开票地址一定要跟客户相关联
                 "orderDetailList": [
                     {
                         "amount": 1000000.00,
@@ -90,15 +91,15 @@ class Test_Order(object):
                         "amount": 1000000.00,
                         "deliveryDate": deliveryDate,  # 交货日期
                         "deliveryWarehouse": "string",
-                        "discount": 98.50,  # 折扣
+                        # "discount": 98.50,  # 折扣
                         "minNum": 10,
-                        "num": 10000,
+                        "num": 1000,
                         "productCode": "Already" + mynum,
                         "productName": "AutomaticTest",
                         "remark": "商品好啊" + mynum,
                         "specs": "1000*2000",
                         "unit": "吨",
-                        "unitPrice": 100,
+                        "unitPrice": 2000,
                         "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
                     },
                     {
@@ -225,7 +226,7 @@ class Test_Order(object):
                         "amount": 1000000.00,
                         "deliveryDate": deliveryDate,  # 交货日期
                         "deliveryWarehouse": "string",
-                        "discount": 98.50,  # 折扣
+                        # "discount": 98.50,  # 折扣
                         "minNum": 10,
                         "num": 10000,
                         "productCode": "Already" + mynum[1:],
@@ -233,12 +234,12 @@ class Test_Order(object):
                         "remark": "商品好啊卐卍卍卍666" + mynum[1:],
                         "specs": "1000*2000",
                         "unit": "吨",
-                        "unitPrice": 100,
+                        "unitPrice": 200,
                         "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
                     }
                 ],
                 "placeOrderDate": placeOrderDate,
-                "receiveAddressId": 1581908605542100993,
+                "receiveAddressId": 1589546365069348866,  # 收货地址一定要跟客户相关联
                 "remark": r"九折带5\|/",
                 "status": 1
                 }
@@ -250,7 +251,7 @@ class Test_Order(object):
         code = json.loads(resp)["code"]
         assert code == 200
 
-    # @pytest.mark.skip(reason='我想跳过')
+    @pytest.mark.skip(reason='暂时跳过')
     def test_orderDel(self):
         Authorization = 'Bearer ' + get_token
         Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \

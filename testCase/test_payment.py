@@ -51,7 +51,7 @@ class Test_Payment(object):
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
                           "Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1573493506460860417",
+            "tenantId": "1586979014478311425",
             "Content-Type": "application/json"
         }
         url = "http://192.168.3.156/dev-api/crm/payment/save"
@@ -67,7 +67,7 @@ class Test_Payment(object):
             "contractId": "1574238066577022978",
             "contractNum": "HT2022-10-204896",
             "contractAmount": "10000.00",
-            "customerId": "1570238472918695937",  # 张楚岚
+            "customerId": "1588101817390718978",  # New
             "list": [{
                 "orderId": "",
                 "orderNo": "suibianAdd",

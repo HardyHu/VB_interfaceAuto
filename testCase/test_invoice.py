@@ -58,29 +58,29 @@ class Test_Invoice(object):
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36"
                           "Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1573493506460860417",
+            "tenantId": "1586979014478311425",
             "Content-Type": "application/json"
         }
         save_url = 'http://192.168.3.156/dev-api/crm/invoice/save'
         date = demo
         data = {
-            "account": "62287700100132071",
-            "addressId": 1581907136998830083,  # 1570238472939667458 开票地址
+            "account": "661231361892",
+            "addressId": 1588101817436856321,  # 开票地址 一定要关联上客户
             "amount": 7200000.00,
-            "bank": "招商银行",
+            "bank": "招商银行南山总行",
             "contacts": "市卫健委",
             "contactsMode": "13866668888",
-            "contractId": 1573601475999346690,  # *09240010
+            "contractId": 1588443861459988481,  # new.
             "contractNo": "HT202209240010",
-            "customerId": 1580852611038867457,  # 测试大佬，张楚岚1570238472918695937,
+            "customerId": 1588101817390718978,  # new,
             "date": date,  # 开票日期
-            "identifyCode": "91330000142916567N",  # 纳税识别码 91330000142916567N
-            "mailAddress": "一帆风顺，驱邪避灾，万事大吉大利！",
+            "identifyCode": "xxxI000",  # 纳税识别码 91330000142916567N
+            "mailAddress": "一帆风顺，奋斗者们，大吉大利72号。！",
             "orderId": 1580820787574231041,
             "orderNo": "XS202210140027",
             "phone": "0755-626626",
             "remark": "祝大家都发财、有福气、心情愉快、事业有成、家族兴旺、婚姻美满、福如东海、前途似锦！",
-            "rise": "woWu66668888",
+            "rise": "woWu8888",
             "riseType": 1,
             "status": 1,
             "type": 1

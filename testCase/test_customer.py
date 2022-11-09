@@ -15,11 +15,11 @@ import requests
 t = datetime.datetime.now()
 r1 = random.randint(1000, 9001)
 t2 = (t + datetime.timedelta(days=2)).strftime("%Y-%m-%d %H:%M:%S")
-name = "小明" + t2[:10] + str(r1)
+name = "测试" + t2[:10] + str(r1)
 
 rd = random.sample(range(13), 5)
 rstr = "".join(str(i) for i in rd)
-newname = "XM" + rstr
+newname = "Tester" + rstr
 
 with open('access_token.txt', 'r') as f:
     get_token = f.read()
@@ -47,14 +47,14 @@ class Test_Customer:
     def test_customerSave(self, demo):  # ,demo
         # global headers
         Authorization = 'Bearer ' + get_token
-        print(f'{Authorization=}')
+        # print(f'{Authorization=}')
         Cookie = 'rememberMe=true; Admin-Expires-In=1440; username=admin1;' \
                  ' password=xxx==; Admin-Token=' + get_token  # + '; Old-Token=' + old_token
         headers = {
             "Authorization": Authorization,
             "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 Chrome/103.0.0.0 Safari/537.36",
-            "tenantId": "1573493506460860417",
+            "tenantId": "1586979014478311425",
             "Content-Type": "application/json"
         }
         url = "http://192.168.3.156/dev-api/crm/customer/save"
@@ -97,7 +97,7 @@ class Test_Customer:
             "remark": "这事超长的备注。。。（）（）（）（）（）（）（）（）（）（）（）"
                       "（）（）（）（）（）（）（）（）（）（）（）（）（）#￥%……&*（）—————————————————————————————————————————"
                       "—————————————————————————————————！！！！！！！！！！！！！！！！！！！！！！！！righting《 的我看就不"
-                      "打空间大把我答辩机会不放假无法解开方便未接！这事超长的备注。。。（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）"
+                      "打空间大把我答辩机会不放假无法解开方便未接！这事超长的备注。。。（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（1）"
         }
         # print(data)
         data = json.dumps(data)
@@ -112,7 +112,7 @@ class Test_Customer:
         # url = "http://192.168.3.156/dev-api/crm/customer/save"
         data = {"目前客户、联系人都没有删除功能，无需校验"}
         checkStr = list(data)[0][4:8]
-        print(f'checkStr object is {checkStr}')
+        print(f'{checkStr =}')
         assert "联系人" in checkStr
 
 

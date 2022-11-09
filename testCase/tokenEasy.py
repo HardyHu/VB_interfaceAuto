@@ -13,7 +13,7 @@ choose_url = 'http://192.168.3.155:8080/system/user/chooseTenant'
 old_url = 'http://192.168.3.155:8080/auth/old/platform/login'
 
 user = 'huzk'
-passwd = '110bg123'
+passwd = '123456'
 
 
 def check_code():
@@ -48,7 +48,7 @@ def choose_tenant(token1):
         "Content-Type": "application/json;charset=UTF-8",
         "Authorization": "Bearer " + token1
     }
-    data = {"tenantId": "1573493506460860417"}
+    data = {"tenantId": "1586979014478311425"}  # 深圳前海优管信息技术测试公司 1586979014478311425    好哒：1573493506460860417
     r = requests.post(choose_url, data=json.dumps(data), headers=headers)
     res = json.loads(r.text)
     print(res)
@@ -59,9 +59,7 @@ def switch_auth(token1):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 Chrome/86.0.4240.198 Safari/537.36",
         "Authorization": "Bearer " + token1
-
     }
-
     r = requests.post(old_url, headers=headers)
     res = json.loads(r.text)
     print(res)
@@ -71,11 +69,11 @@ def switch_auth(token1):
 if __name__ == '__main__':
 
     # 拿到登录token，并写入指定文件
-    result = 9
-    get_img_id = '56d770d5e6c94156aaa9f0ac3a4646f1'
+    result = 1
+    get_img_id = '3bea263c1daa4a149e03902357461ba7'
     get_token = login_auth(result, get_img_id)
     if choose_tenant(get_token):
-        print('公司身份登录成功')
+        print('公司身份登录成功') # tenantId: "1586979014478311425"
     else:
         print('sorry，token出现问题! ')
     another_token = switch_auth(get_token)
@@ -84,4 +82,4 @@ if __name__ == '__main__':
         print('覆盖写入token完成!')
     with open('old_token.txt', 'w+') as file:
         file.write(another_token)   # 现在又取消了老token的使用
-        print(f'{another_token= } 已生成')
+        print(f'{another_token= }\n 已生成')

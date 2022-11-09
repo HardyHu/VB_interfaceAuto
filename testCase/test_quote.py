@@ -4,14 +4,14 @@
 报价的增删改查，
 初期仅实现对新建和删除的用例校验
 """
-import pytest
-import requests
-import json
 import datetime
-import random
+import json
 import time
 
-global newlist,headers
+import pytest
+import requests
+
+global newlist, headers
 with open('access_token.txt', 'r') as f:
     get_token = f.read()
 get_token = get_token.strip()
@@ -25,15 +25,13 @@ headers = {
     "Cookie": Cookie,
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
                   "Chrome/103.0.0.0 Safari/537.36",
-    "tenantId": "1573493506460860417",
+    "tenantId": "1586979014478311425",
     "Content-Type": "application/json"
 }
 
 t2 = datetime.datetime.now()
 t2 = t2.strftime("%Y-%m-%d %H:%M:%S")
 t = t2[:10] + "T" + t2[11:] + ".000Z"
-
-
 
 
 @pytest.fixture(params=[[1, t], [2, t], [3, t], [4, t], [5, t]], name="demo")
@@ -58,10 +56,10 @@ class Test_Quote(object):
         date = demo[1]
         num = str(demo[0])
         data = {
-            "amount": 35000000,
-            "businessId": 1574730119043932162,  # 商机id
+            "amount": '35000000.0',
+            "businessId": 1588373394439049218,  # 需求 阶段进行删除
             "currency": "rmb",
-            "customerId": 1580852611038867457,  # 测试大佬
+            "customerId": 1588101817390718978,  # 客户 新平台可用
             "date": date,  # 报价日期
             "discount": 1,  # 折扣
             "fileList": [
@@ -73,11 +71,11 @@ class Test_Quote(object):
             "name": "美好的报价单" + num,  # 报价单名称
             "quoteDetailList": [
                 {
-                    "amount": 100000,
+                    "amount": 100000,  # 报价金额
                     "currency": "",
                     "discount": 1,
                     "minNum": 20,
-                    "num": 10000,
+                    "num": 10000,  # 数量
                     "productCode": "NYmarket008",
                     "productName": "Newyork city",
                     "rate": 1,
@@ -153,7 +151,7 @@ class Test_Quote(object):
         newlist.append(quote_id)  # 补充新建的数据id到列表
         assert json.loads(response.text)["code"] == 200
 
-    @pytest.mark.skip(reason='只是想跳过.')
+    # @pytest.mark.skip(reason='只是想跳过.')
     def test_quotedel(self):
         del_url = 'http://192.168.3.156/dev-api/crm/quote/delete'
 
