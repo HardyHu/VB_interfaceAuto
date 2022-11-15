@@ -64,30 +64,32 @@ class Test_Payment(object):
         # 1574238066577022978
         data = {
             "amount": "12000.00",
-            "contractId": "1574238066577022978",
-            "contractNum": "HT2022-10-204896",
-            "contractAmount": "10000.00",
-            "customerId": "1588101817390718978",  # New
+            "contractId": "1591358602591354882",
+            "contractNum": "HT2022-11-122271R",
+            # "contractAmount": "10000.00",
+            "customerId": "1591354228309770242",  # New1）1591354228309770242 2）1591353038708686850
             "list": [{
-                "orderId": "",
+                "orderId": "1590233145431101442",
                 "orderNo": "suibianAdd",
+                # "orderAmount":"",
                 "amount": "4800",
                 "paymentPlanId": "",
                 "paymentPlanNo": "JH0002",
                 "paymentPlaneAmount": "4800",
                 "paymentPlaneDate": paymentPlaneDate1,
-                "surplusAmount": "7200",
+                # "surplusAmount": "7200",
                 "productCode": "4800",
-                "remark": "还剩7200"
+                "remark": "还剩xxx..."
             }, {
-                "orderId": "",
+                "orderId": "1590233145431101442",
                 "orderNo": "Add2",
-                "amount": "5200",
+                # "orderAmount":"",
+                "amount": "10000",
                 "paymentPlanId": "",
                 "paymentPlanNo": "JH0003",
                 "paymentPlaneAmount": "5200",
                 "paymentPlaneDate": paymentPlaneDate2,
-                "surplusAmount": "2000",
+                # "surplusAmount": "2000",
                 "productCode": "5200",
                 "remark": remark
             }],

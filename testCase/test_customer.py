@@ -15,7 +15,7 @@ import requests
 t = datetime.datetime.now()
 r1 = random.randint(1000, 9001)
 t2 = (t + datetime.timedelta(days=2)).strftime("%Y-%m-%d %H:%M:%S")
-name = "测试" + t2[:10] + str(r1)
+name = "bug" + t2[:10] + str(r1)
 
 rd = random.sample(range(13), 5)
 rstr = "".join(str(i) for i in rd)
@@ -27,7 +27,7 @@ get_token = get_token.strip()
 
 
 @pytest.fixture(params=[[name, t2[:10] + "1"], [name + "A", t2[:10] + "2"], [newname, t2[:10] + "3"],
-                        ["超哥" + rstr, t2[:10] + str(random.randint(6, 9))]], name="demo")
+                        ["测试" + rstr, t2[:10] + str(random.randint(6, 9))]], name="demo")
 def ready(request):
     """
     需要参数化：paymentPlaneDate1，paymentPlaneDate2，remark，

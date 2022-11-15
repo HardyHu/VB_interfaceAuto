@@ -82,7 +82,7 @@ class Test_Contract:
             "companySignDate": companySignDate,
             "companySignatory": "他才是签字人",
             "currency": "rmb",
-            "customerId": "1588101817390718978",    # tenantId下的客户
+            "customerId": "1591353038708686850",    # new.
             "customerSignDate": customerSignDate,
             "customerSignatory": "我不是签字人",
             "endDate": "2034-10-01T16:00:00.000Z",

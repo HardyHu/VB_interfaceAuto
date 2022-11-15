@@ -115,7 +115,7 @@ if __name__ == '__main__':
     print(contents[1])
     # 发送带附件的邮件，最后1个参数为附件地址
     # 接收邮件的邮箱和附件地址可以为列表，即发送给多个邮箱，发送多个附件
-    receive_address = ['wys@veiban.com',
+    receive_address = ['wys@veiban.com', 'lwb@epipe.com.cn', 'zyw@epipe.com.cn',
                        'zhuwei@veiban.com', 'mxc@epipe.com.cn']  # , 'mxc@epipe.com.cn' >>>谨记：发送的时候再加上领导邮件<<<
     if summaryTitle:
         yag.send(receive_address, 'CRM系统自动化报告_' + salt, contents, [r"E:\Users\Administrator\Desktop\report.zip"])
