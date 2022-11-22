@@ -82,7 +82,7 @@ class Test_Contract:
             "companySignDate": companySignDate,
             "companySignatory": "他才是签字人",
             "currency": "rmb",
-            "customerId": "1591353038708686850",    # new.
+            "customerId": "1592578254873063425",    # new.
             "customerSignDate": customerSignDate,
             "customerSignatory": "我不是签字人",
             "endDate": "2034-10-01T16:00:00.000Z",
@@ -111,7 +111,7 @@ class Test_Contract:
             "specialTerms": specialTerms,
             "startDate": startDate,
             "status": 1,
-            "owner": '13636035190',
+            "owner": '',
             "quoteId": 1584473343174139906
         }
         # print(data)

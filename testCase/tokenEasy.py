@@ -69,17 +69,29 @@ def switch_auth(token1):
 if __name__ == '__main__':
 
     # 拿到登录token，并写入指定文件
-    result = 42
-    get_img_id = '2f977f41d3074368a3eb346002822281'
-    get_token = login_auth(result, get_img_id)
-    if choose_tenant(get_token):
-        print('公司身份登录成功')  # tenantId: "1586979014478311425"
-    else:
-        print('sorry，old token出现问题! ')
-    another_token = switch_auth(get_token)
-    with open('access_token.txt', 'w') as f:
-        f.write(get_token)
-        print('覆盖写入token完成!')
-    with open('old_token.txt', 'w+') as file:
-        file.write(another_token)  # 现在又取消了老token的使用
-        print(f'{another_token= }\n 已生成')
+    # result = 11
+    # get_img_id = '9343d9380d474cdd85f1f72e82a16662'
+    # get_token = login_auth(result, get_img_id)
+    # if choose_tenant(get_token):
+    #     print('公司身份登录成功')  # tenantId: "1586979014478311425"
+    # else:
+    #     print('sorry，old token出现问题! ')
+    # another_token = switch_auth(get_token)
+    # with open('access_token.txt', 'w') as f:
+    #     f.write(get_token)
+    #     print('覆盖写入token完成!')
+    # with open('old_token.txt', 'w+') as file:
+    #     file.write(another_token)  # 现在又取消了老token的使用
+    #     print(f'{another_token= }\n 已生成')
+
+    from user.file_operation import ymlOperation
+    # 尝试更新token
+    d = {}
+    # d['access_token'] = get_token
+    op_path = 'E:\\Veiban Project\\testCase\\user\\config.yml'
+    # ymlOperation.update_yaml(ymlOperation, op_path, 'new_plate', d)
+    Od = {'company': 'The same as', 'token': 'JustSee1'}
+    ymlOperation.update_yaml(ymlOperation, op_path, 'old_platform', Od)
+
+    access_token = ymlOperation.read_yaml()
+    print(access_token)

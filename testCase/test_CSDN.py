@@ -12,8 +12,8 @@ headers = {
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 '
                   '(KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
 }
-article_url = 'https://blog.csdn.net/qq_17195161/article/details/126322450'
-article_url_backup = 'https://blog.csdn.net/qq_17195161/article/details/127420365'
+article_url = 'https://blog.csdn.net/qq_17195161/article/details/127919085'  # https://blog.csdn.net/qq_17195161/article/details/127919085
+article_url_backup = 'https://blog.csdn.net/qq_17195161/article/details/126322450'
 log = logging.getLogger(__name__)
 
 def title_output():
@@ -29,7 +29,8 @@ def request_article():
         s.keep_alive = False
         sleepTime = random.randint(2, 6)
         print(f'此次休眠预备时长：{sleepTime}')
-        response = requests.get(article_url_backup, headers=headers, timeout=100)
+        print('this is article_url')
+        response = requests.get(article_url, headers=headers, timeout=100)
         if response.status_code == 200:
             print(response.text[-36:], end=' ')
             print(f'第{i + 1}次访问成功！\n')

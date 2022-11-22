@@ -64,10 +64,10 @@ class Test_Payment(object):
         # 1574238066577022978
         data = {
             "amount": "12000.00",
-            "contractId": "1591358602591354882",
-            "contractNum": "HT2022-11-122271R",
+            "contractId": "1591959982301638658",
+            "contractNum": "HT2022-11-141316A",
             # "contractAmount": "10000.00",
-            "customerId": "1591354228309770242",  # New1）1591354228309770242 2）1591353038708686850
+            "customerId": "1592578254873063425",  # New1）1591354228309770242 2）1591353038708686850
             "list": [{
                 "orderId": "1590233145431101442",
                 "orderNo": "suibianAdd",

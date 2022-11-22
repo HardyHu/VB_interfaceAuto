@@ -68,9 +68,9 @@ class Test_Order(object):
                 "contractId": 1591959981957705729,  # 不同租户的合同需要替换掉,名:
                 # "name": "合同test010","number": "wsht_010",
                 "contractNumber": "HT2022-11-141316R",
-                "customerId": 1591353038708686850,  # "name":Tester13090875
+                "customerId": 1592578254873063425,  # "name":Testerxx
                 "discount": 90.00,
-                "invoiceAddressId": 1591353038750629889,  # 开票地址一定要跟客户相关联
+                "invoiceAddressId": 1592578254894034945,  # 开票地址一定要跟客户相关联
                 "orderDetailList": [
                     {
                         "amount": 1000000.00,
@@ -239,7 +239,7 @@ class Test_Order(object):
                     }
                 ],
                 "placeOrderDate": placeOrderDate,
-                "receiveAddressId": 1591353038750629890,  # 收货地址一定要跟客户相关联
+                "receiveAddressId": 1592578254894034946,  # 收货地址一定要跟客户相关联
                 "remark": r"九折带5\|/",
                 "status": 1
                 }

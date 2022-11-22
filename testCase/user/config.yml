@@ -1,6 +1,6 @@
-S_data:
-  谁糊弄boss: 几个管理
-S_data2:
-  company: 优质云
-  name: 汉字
-title: 您的大哥现在是胡智凯
+new_plate:
+  access_token: eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2tleSI6ImRiNDQwOThiLTczZTUtNGIxYi1iNDZmLTBhYmNjM2NhZTI3OCIsInVzZXJfaWQiOjE1OSwidXNlcm5hbWUiOiJodXprIn0.3G6pGB3JdRYjwFaww4d_8jLq3GVjTLvifYKWkRKqLmjeDWCEZ6JnuMq2s9FEjdg5cCqjCrN6cWhOMqd67Wc5WQ
+old_platform:
+  company: The same as
+  token: JustSee1
+title: title has his haha.
