@@ -2,7 +2,10 @@
 cd E:\Veiban Project
 E:
 cd testCase
-@REM python tokenEasy.py  # 提前获取token
+rem # 提前获取token
+rem python tokenEasy.py
+python "E:\\Veiban Project\\testCase\\tokenEasy.py"
+
 rmdir ..\result /s/q
 mkdir ..\result
 pytest -sv --alluredir=..\result

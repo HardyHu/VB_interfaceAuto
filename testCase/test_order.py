@@ -46,7 +46,7 @@ class Test_Order(object):
     def teardown(self):
         print('测试用例已结束')
 
-    # @pytest.mark.flaky(reruns=2, reruns_delay=2)
+    @pytest.mark.flaky(reruns=2, reruns_delay=2)
     def test_order_save(self, demo):
         Authorization = 'Bearer ' + get_token
         Cookie = 'rememberMe=true; Admin-Expires-In=720; username=admin1; ' \
@@ -85,7 +85,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  # 这个公司创建的仓库
                     },
                     {
                         "amount": 1000000.00,
@@ -100,7 +100,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 2000,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     },
                     {
                         "amount": 1000000.00,
@@ -115,7 +115,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     },
                     {
                         "amount": 1000000.00,
@@ -130,7 +130,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""
                     },
                     {
                         "amount": 1000000.00,
@@ -145,7 +145,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""
                     },
                     {
                         "amount": 1000000.00,
@@ -160,7 +160,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     },
                     {
                         "amount": 1000000.00,
@@ -175,7 +175,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     },
                     {
                         "amount": 1000000.00,
@@ -190,7 +190,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     },
                     {
                         "amount": 1000000.00,
@@ -205,7 +205,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     },
                     {
                         "amount": 1000000.00,
@@ -220,7 +220,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 100,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     },
                     {
                         "amount": 1000000.00,
@@ -235,7 +235,7 @@ class Test_Order(object):
                         "specs": "1000*2000",
                         "unit": "吨",
                         "unitPrice": 200,
-                        "warehouseId": ""  # 1e572de3a2174ff8b47b24b4bde7b619 table:erp_location,name:洞天福地11 status:0启用
+                        "warehouseId": ""  #
                     }
                 ],
                 "placeOrderDate": placeOrderDate,

@@ -65,18 +65,18 @@ class Test_Invoice(object):
         date = demo
         data = {
             "account": "661231361892",
-            "addressId": 1588101817436856321,  # 开票地址 一定要关联上客户
+            "addressId": 1592578254894034945,  # 开票地址 一定要关联上客户
             "amount": 7200000.00,
             "bank": "招商银行南山总行",
             "contacts": "市卫健委",
             "contactsMode": "13866668888",
-            "contractId": 1588443861459988481,  # new.
+            "contractId": 1591959981957705729,  # 此合同跟订单相关，合同号：HT2022-11-141316R
             "contractNo": "HT202209240010",
-            "customerId": 1588101817390718978,  # new,
+            "customerId": 1592578254873063425,  # new,
             "date": date,  # 开票日期
             "identifyCode": "xxxI000",  # 纳税识别码 91330000142916567N
             "mailAddress": "一帆风顺，奋斗者们，大吉大利72号。！",
-            "orderId": 1580820787574231041,
+            "orderId": 1595114986768199681, # 此订单跟合同相关，订单号：XS202211230003
             "orderNo": "XS202210140027",
             "phone": "0755-626626",
             "remark": "祝大家都发财、有福气、心情愉快、事业有成、家族兴旺、婚姻美满、福如东海、前途似锦！",
@@ -84,7 +84,7 @@ class Test_Invoice(object):
             "riseType": 1,
             "status": 1,
             "type": 1
-        }
+        } # * 23-7/1 * * * /
         r = requests.post(url=save_url, headers=headers, data=json.dumps(data))
         print("********************")
         print(r.text)

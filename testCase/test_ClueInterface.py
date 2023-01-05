@@ -38,7 +38,9 @@ def test_ClueSave():  # demo
         int_r = random.randint(18000, 20000)
         CN = "test." + str(int_r) + " Company"
         N = "Xtest." + str(int_r)
-        data = {"companyName": CN, "name": N + str(i), "status": 1}
+        data = {"companyName": CN, "name": N + str(i), "status": 1, "address": "Boss will not let u survive till the "
+                                                                               "end.233", "province": "",
+                "city": "", "county": ""}  # 江苏省 徐州市 云龙区
         r = requests.post(url=url, headers=headers, data=json.dumps(data))  # request.param
 
         ids = r.json().get("data")
@@ -63,5 +65,4 @@ def test_ClueDel():
             print(f"接口内的状态码为{get_code}")
             assert get_code == 200
 
-# pytest.main(['-sqx', 'test_ClueInterface.py'])
-# test_ClueSave()
+pytest.main(['-sqx', 'test_ClueInterface.py'])

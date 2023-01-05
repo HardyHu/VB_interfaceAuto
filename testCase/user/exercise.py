@@ -3,8 +3,124 @@
 __author__ = 'Hardy'
 
 import json
+import random
+import time
 
 import requests
+
+# Exercise 6
+
+""" 该球从n米的高空落下后，第m次落地 """
+
+
+def calculate_this(m=None):
+    n = int(input('请输入高度: '))  # 落地时的高度
+    if m is None:
+        m = 0  # 落地次数
+    Cristiano_Ronaldo = float(input('反弹力度: '))  # 反弹力度，默认是1/4
+    if not Cristiano_Ronaldo:
+        Cristiano_Ronaldo = 0.25
+    my_sum = n
+    while (n * Cristiano_Ronaldo) >= 0.00001:
+        my_sum += n * Cristiano_Ronaldo * 2
+        m += 1
+        print(m)
+        n = Cristiano_Ronaldo * n
+    return '总运行距离%.2f' % my_sum, '运行次数%s' % (m + 1)
+
+
+# print(calculate_this())
+
+# n = int(input())
+# m = int(input())
+# test_num = n
+# while m != 1:
+#     test_num += n * 0.25 * 2
+#     m = m - 1
+#     n = 0.25 * n
+# print('%.2f' % test_num)
+# print('%.6f' % (n * 0.25))  # +0.0001 即最后一次弹起距离
+
+
+# Exercise 5
+# ls1 = [1, 2, 3, 4, 5, 6]
+# ls2 = [11, 22, 33, 44, 55, 66, 88]
+# for l1, l2 in zip(ls1, ls2):
+#     print(l1, l2)
+
+
+# Exercise 4
+def check_num_calcu(num):
+    if num % 3 == 0 and num % 5 == 0:
+        return 'FizzBuzz'
+    if num % 3 != 0 and num % 5 != 0:
+        return str(num)
+    if num % 3 == 0:
+        return 'Fizz'
+    elif num % 5 == 0:
+        return 'Buzz'
+
+
+# 针对公司未作限制的短信发送接口（http://192.168.3.156/register）
+register_url = 'http://192.168.3.155:8080/smsCode?phone='
+
+
+def run_spend_money():
+    headers = {'isToken': 'false',
+               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                             'Chrome/103.0.0.0 Safari/537.36 '
+               }
+    phone_list = ['17349708757']
+    # , '15271180204', '15800011245', '15800011246', '15800011247',
+
+    statistic = 0
+    # for i in range(20):
+    #     list1 = '188000' + ''.join(str(n) for n in random.sample(range(10), 5))
+    #     list2 = '158000' + ''.join(str(n) for n in random.sample(range(10), 5))
+    #     list3 = '158186' + ''.join(str(n) for n in random.sample(range(10), 5))
+    #     this = [list1, list2, list3]
+    #     phone_list.append(random.choice(this))
+    #     # print(phone_list, this)
+    #     sms_url = register_url + random.choice(phone_list)
+    #     print(sms_url)
+    #     res = requests.get(sms_url, headers=headers)
+    #     print(res.text)
+    #     if list1 in phone_list:
+    #         phone_list.remove(list1)
+    #     if list2 in phone_list:
+    #         phone_list.remove(list2)
+    #     if list3 in phone_list:
+    #         phone_list.remove(list3)
+    #     time.sleep(1)
+    #     if json.loads(res.text)['code'] == 200:
+    #         statistic += 1
+
+    # #### 打击沙女士给客官你那个岗位了 ####
+    for i in range(20):
+        list2 = '158000' + ''.join(str(n) for n in random.sample(range(10), 5))
+        list3 = '158186' + ''.join(str(n) for n in random.sample(range(10), 5))
+        phone_list.append(list2)
+        phone_list.append(list3)
+        # print(phone_list, this)
+        sms_url = register_url + random.choice(phone_list)
+        print(sms_url)
+        res = requests.get(sms_url, headers=headers)
+        print(res.text)
+        if '15818630490' in phone_list:
+            phone_list.remove('15818630490')
+        if list2 in phone_list:
+            phone_list.remove(list2)
+        if list3 in phone_list:
+            phone_list.remove(list3)
+        time.sleep(60)
+        if json.loads(res.text)['code'] == 200:
+            statistic += 1
+    print(f'Final list is{phone_list}')
+    print(f'此次成功发送短信个数：{statistic}个.')
+
+
+run_spend_money()
+
 
 # 166平台接口批量导入
 url = 'http://192.168.3.166:8086/staff/update'
@@ -47,10 +163,10 @@ def staff_update():
 def staff_add():
     for i in range(62, 70):
         staffName = '张三' + str(i)
-        companyTel = '188000026' + str(i)
+        companyPhone = '188000026' + str(i)
         idCard = '4211821999101016' + str(i)
         data = {"staffName": staffName,
-                "companyTel": companyTel,
+                "companyTel": companyPhone,
                 "companyId": "cfe05dd2cedf4dd1ad9475d32838eaf9",
                 "officeIds": ["03df386de8c54c669bb9d9dd81744227"],
                 "idCard": idCard,
@@ -63,59 +179,4 @@ def staff_add():
         res = requests.post(url_add, headers=headers, data=json.dumps(data))
         print(f'{staffName}添加成功，返回{res.text}')
     print('All staff add compeleted or Just end!')
-
-
 # staff_add()
-
-str1 = 'abcee'
-str2 = 'ceabe'
-str3 = 'newbi'
-
-
-# Exercise 4
-def check_num_calcu(num):
-    if num % 3 == 0 and num % 5 == 0:
-        return 'FizzBuzz'
-    if num % 3 != 0 and num % 5 != 0:
-        return str(num)
-    if num % 3 == 0:
-        return 'Fizz'
-    elif num % 5 == 0:
-        return 'Buzz'
-
-
-print(check_num_calcu(19))
-
-
-def check_repeat(str):
-    print(set(str))
-    if len(str) == 0:
-        return False
-    if len(set(str)) == len(str):
-        return True
-    return False
-
-
-# print(check_repeat(str1))
-#
-# print(check_repeat(str3))
-
-def check_another(str1, str2):
-    print(sorted(str1))
-    if sorted(str1) == sorted(str2):
-        return '两个字符其中一个是另一个的排列'
-    else:
-        return False
-
-
-# print(check_another(str1, str2))
-
-def rechange_str(str):
-    if isinstance(str, list):
-        return str[::-1]
-    else:
-        print(list(str), False)
-        return list(str)[::-1]
-
-
-print(rechange_str(str2))

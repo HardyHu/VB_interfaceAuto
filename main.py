@@ -13,7 +13,6 @@ from _pydecimal import Decimal, Context, ROUND_HALF_UP
 # 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
 import yagmail
 
-# from testCase.test_invoice import *
 user = 'hzk@veiban.com'
 password = '110bg123!'
 
@@ -67,7 +66,7 @@ def rightContent():
     本次自动化代码总共加入测试用例：{total}个，
     失败用例：{failed}，故障用例：{broken}，通过用例：{passed}，跳过用例：{skipped}，未知用例：{unknown}。
     通过率为：{pass_probability}
-    详情请见附件，报告查看请使用allure工具（工具获取与使用，请联系huZK）,谢谢！
+    详情请见附件，报告查看请使用allure工具（工具获取与使用，请联系HuZK）,谢谢！
     
     用例开始日期为：{start}
     结束日期为：{stop}
@@ -117,6 +116,7 @@ if __name__ == '__main__':
     # 接收邮件的邮箱和附件地址可以为列表，即发送给多个邮箱，发送多个附件
     receive_address = ['wys@veiban.com', 'lwb@epipe.com.cn', 'zyw@epipe.com.cn',
                        'zhuwei@veiban.com', 'mxc@epipe.com.cn']  # , 'mxc@epipe.com.cn' >>>谨记：发送的时候再加上领导邮件<<<
+
     if summaryTitle:
         yag.send(receive_address, 'CRM系统自动化报告_' + salt, contents, [r"E:\Users\Administrator\Desktop\report.zip"])
     print('发送动作已完成！')

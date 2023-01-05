@@ -20,9 +20,9 @@ def check_code():
     r = requests.get(req_url)
     print(r.headers)
     res = json.loads(r.text)
-    img = res['img']
+    # img = res['img']  # 暂时注释，无需传出
     img_id = res['uuid']
-    return [img, img_id] if res['captchaEnabled'] else False
+    return img_id if res['captchaEnabled'] else False
 
 
 def login_auth(pic_result, img_id):
@@ -68,30 +68,37 @@ def switch_auth(token1):
 
 if __name__ == '__main__':
 
-    # 拿到登录token，并写入指定文件
-    # result = 11
-    # get_img_id = '9343d9380d474cdd85f1f72e82a16662'
-    # get_token = login_auth(result, get_img_id)
-    # if choose_tenant(get_token):
-    #     print('公司身份登录成功')  # tenantId: "1586979014478311425"
-    # else:
-    #     print('sorry，old token出现问题! ')
-    # another_token = switch_auth(get_token)
-    # with open('access_token.txt', 'w') as f:
-    #     f.write(get_token)
-    #     print('覆盖写入token完成!')
-    # with open('old_token.txt', 'w+') as file:
+    # 拿到登录token，并写入指定文件 <<- 注释完记得解注释 ->>
+    # result = 8
+    # get_img_id = '1e2de5f60f9a47db8f8d0be0ff9e6293'  # 万能验证码88
+    easy = check_code()
+    if easy:
+        # global result, get_img_id
+        result = 88
+        get_img_id = easy
+
+    # noinspection PyUnboundLocalVariable
+    get_token = login_auth(result, get_img_id)
+    if choose_tenant(get_token):
+        print('公司身份登录成功')  # tenantId: "1586979014478311425"
+    else:
+        print('sorry，old token出现问题! ')
+    another_token = switch_auth(get_token)
+    with open('access_token.txt', 'w') as f:
+        f.write(get_token)
+        print('覆盖写入token完成!')
+    # with open('old_token.txt', 'w+') as file: # 暂时不用写入老token
     #     file.write(another_token)  # 现在又取消了老token的使用
     #     print(f'{another_token= }\n 已生成')
 
     from user.file_operation import ymlOperation
-    # 尝试更新token
-    d = {}
-    # d['access_token'] = get_token
-    op_path = 'E:\\Veiban Project\\testCase\\user\\config.yml'
-    # ymlOperation.update_yaml(ymlOperation, op_path, 'new_plate', d)
-    Od = {'company': 'The same as', 'token': 'JustSee1'}
-    ymlOperation.update_yaml(ymlOperation, op_path, 'old_platform', Od)
 
-    access_token = ymlOperation.read_yaml()
-    print(access_token)
+    # 尝试更新token
+    d = {'access_token': get_token}
+    op_path = 'E:\\Veiban Project\\testCase\\user\\config.yml'
+    ymlOperation.update_yaml(ymlOperation, op_path, 'new_plate', d)
+    # Od = {'company': 'The same as', 'token': 'JustSee1'}
+    # ymlOperation.update_yaml(ymlOperation, op_path, 'old_platform', Od)
+
+    my_read = ymlOperation.read_yaml()
+    print(my_read)

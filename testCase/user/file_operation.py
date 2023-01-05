@@ -98,6 +98,7 @@ class ymlOperation:
         old_data[key] = value  # 修改为取值的
         with open(file, 'w', encoding='utf-8') as f:
             yaml.dump(old_data, f, encoding='utf-8', allow_unicode=True)
+            print(f'文件属性{key}更新成功~~')
 
 
 data = {"title": "Write and maintain by __Author__: HuZk",
