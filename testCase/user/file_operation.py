@@ -51,7 +51,7 @@ def run_choice1():
 # print('csv 配置文件写入完成.')
 
 class ymlOperation:
-    def path_right(self):
+    def path_Right(self):
         import os
         file = 'config.yml'
         pwd = 'E:\\Veiban Project\\testCase\\user'
@@ -67,7 +67,7 @@ class ymlOperation:
         """
         # data2 = self.data2
         myClass = ymlOperation()
-        file_position = cls.path_right(self=myClass)
+        file_position = cls.path_Right(self=myClass)
         with open(file_position, 'w', encoding='utf-8') as yml_file:  # , encoding='utf-8', a是追加
             yml_file.write('\n')
             yaml.dump(data2, yml_file, encoding='utf-8', allow_unicode=True)  # utf-8, unicode
@@ -75,7 +75,7 @@ class ymlOperation:
     @classmethod
     def read_yaml(cls):
         myClass = ymlOperation()
-        file_position = cls.path_right(self=myClass)
+        file_position = cls.path_Right(self=myClass)
         f = open(file_position, 'r', encoding='utf-8')  # , encoding='utf-8'
         yml_config = yaml.load(f, Loader=yaml.FullLoader)
         """
@@ -91,7 +91,7 @@ class ymlOperation:
     @staticmethod
     def update_yaml(self, file, key, value):
         # myClass = ymlOperation()
-        file_position = ymlOperation.path_right(self)
+        file_position = ymlOperation.path_Right(self)
         if not file:
             file = file_position
         old_data = ymlOperation.read_yaml()  # 读取文件数据
@@ -100,12 +100,14 @@ class ymlOperation:
             yaml.dump(old_data, f, encoding='utf-8', allow_unicode=True)
             print(f'文件属性{key}更新成功~~')
 
-
-data = {"title": "Write and maintain by __Author__: HuZk",
-        "new_plate": {"access_token": "abcd_test"},
-        "old_platform": {"token": "old_token_eyJ0eXA", "company": "just seems tenantId"}}
+# yml文件写入
+# data = {"title": "Write and maintain by __Author__: HuZk",
+#         "new_plate": {"access_token": "156_test"},
+#         "197_Env_Test": {"197_token": "PLM_Test", "Interface_Api_Host": "http://192.168.3.197:8080/plm"},
+#         "old_platform": {"token": "old_token_eyJ0eXA", "company": "just seems tenantId"}}
 # ymlOperation.write_yaml(data)
 # print('yml文件写入完成！')
+
 
 # 更新yml文件内特定内容
 # d = {}

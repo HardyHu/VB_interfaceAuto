@@ -94,7 +94,7 @@ if __name__ == '__main__':
         os.system('cd E:\\VeiBan Project\\testCase')
         os.system(r'xcopy "E://资料//自动化所需文档//基础配置文件\" "E://VeiBan Project//result" /y')
         time.sleep(2)
-        os.system(r'allure generate -c -o .\report .\result')   # 目录位置一定要确认正确
+        os.system(r'allure generate -c -o .\report .\result')  # 目录位置一定要确认正确
 
         # 打包最新report内容到桌面。
         zipDir("E:\\VeiBan Project\\report", r"E:\Users\Administrator\Desktop\report.zip")
@@ -106,19 +106,21 @@ if __name__ == '__main__':
     summaryTitle = rightContent()
     salt = summaryTitle[1][:16]
     # 邮箱正文，自定义
-    contents = ['\n', summaryTitle[0], '\n<br>VeiBan Project接口测试内容：</br>\n', '线索：test_ClueInterface',
+    contents = ['\n', summaryTitle[0], '\n<br>VeiBan Project接口测试内容：CRM+PLM</br>\n', '线索：test_ClueInterface',
                 '合同：test_Contract',
                 '客户：test_customer',
                 '开票：test_invoice', '实时库存：test_LoadRealtimeInventory', '订单：test_order', '回款：test_Payment',
-                '报价：test_quote', '...', '\n\n作者：HuZk']
+                '报价：test_quote', 'PLM相关：', '项目管理：test_PLM_PM', '项目计划：test_PLM_Plan',
+                '...', 'ISC构建中，请期待...','\n\n关键配置文件：config.yml']
     print(contents[1])
     # 发送带附件的邮件，最后1个参数为附件地址
     # 接收邮件的邮箱和附件地址可以为列表，即发送给多个邮箱，发送多个附件
-    receive_address = ['wys@veiban.com', 'lwb@epipe.com.cn', 'zyw@epipe.com.cn',
-                       'zhuwei@veiban.com', 'mxc@epipe.com.cn']  # , 'mxc@epipe.com.cn' >>>谨记：发送的时候再加上领导邮件<<<
+    receive_address = ['zhangxueqing@veiban.com', 'lwb@epipe.com.cn', 'zyw@epipe.com.cn',
+                       'zdj@epipe.com.cn', 'lgm@epipe.com.cn', 'mxc@epipe.com.cn']  # >谨记：发送的时候再加上领导邮件<
 
     if summaryTitle:
-        yag.send(receive_address, 'CRM系统自动化报告_' + salt, contents, [r"E:\Users\Administrator\Desktop\report.zip"])
+        yag.send(receive_address, '自动化系统测试报告含ISC_' + salt, contents,
+                 [r"E:\Users\Administrator\Desktop\report.zip"])
     print('发送动作已完成！')
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
