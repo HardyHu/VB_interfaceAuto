@@ -4,30 +4,30 @@
 客户的增删改查，
 初期仅实现对新建和删除的用例校验
 """
-import datetime
+# import datetime
 import json
 import random
 
 import pytest
 import requests
+from user.file_operation import ymlOperation
 
 # global name
-t = datetime.datetime.now()
 r1 = random.randint(1000, 9001)
-t2 = (t + datetime.timedelta(days=2)).strftime("%Y-%m-%d %H:%M:%S")
-name = "bug" + t2[:10] + str(r1)
+name = "bug" + str(r1)
 
 rd = random.sample(range(13), 5)
 rstr = "".join(str(i) for i in rd)
 newname = "Tester" + rstr
 
-with open('access_token.txt', 'r') as f:
-    get_token = f.read()
-get_token = get_token.strip()
+
+get_token = ymlOperation.read_yaml()['197_Env_Test'].get('197_token')
 
 
-@pytest.fixture(params=[[name, t2[:10] + "1"], [name + "A", t2[:10] + "2"], [newname, t2[:10] + "3"],
-                        ["测试" + rstr, t2[:10] + str(random.randint(6, 9))]], name="demo")
+@pytest.fixture(
+    params=[[name + str(random.randint(0, 10)), "1779675995667251201"], [name + "A", "1779675995667251201"],
+            [newname, "1771001397778141185"],
+            ["测试" + rstr, "1771001397778141185"]], name="demo")
 def ready(request):
     """
     需要参数化：paymentPlaneDate1，paymentPlaneDate2，remark，
@@ -36,68 +36,49 @@ def ready(request):
     yield request.param
 
 
-class Test_Customer:
-    def setup(self):
-        print("=========分割线=========")
-        print('测试用例已开始')
+def setup():
+    print("=========分割线=========")
+    print('测试用例已开始')
 
-    def teardown(self):
-        print('测试用例已结束')
+
+def teardown():
+    print('测试用例已结束')
+
+
+class Test_Customer:
 
     def test_customerSave(self, demo):  # ,demo
         # global headers
         Authorization = 'Bearer ' + get_token
         # print(f'{Authorization=}')
-        Cookie = 'rememberMe=true; Admin-Expires-In=1440; username=admin1;' \
-                 ' password=xxx==; Admin-Token=' + get_token  # + '; Old-Token=' + old_token
+
         headers = {
             "Authorization": Authorization,
-            "Cookie": Cookie,
+            # "Cookie": Cookie,
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 Chrome/103.0.0.0 Safari/537.36",
             "tenantId": "1586979014478311425",
             "Content-Type": "application/json"
         }
-        url = "http://192.168.3.156/dev-api/crm/customer/save"
-        createName = demo[0]
-        email = demo[1] + '@qq.com'
+        url = "http://192.168.3.197/prod-api/crm/customer/save"
+
         data = {
-            "email": email,
-            "employeeNum": 4,
-            "industryId": 5,
-            "industryName": "",
-            "type": 1,
-            "invoiceList": [
+            "contactsList": [
                 {
-                    "province": "山东省",
-                    "city": "淄博市",
-                    "county": "张店区",
-                    "address": "5008"
-                },
-                {
-                    "address": "天津哪个区",
-                    "city": "市辖区",
-                    "county": "河东区",
-                    "province": "天津市",
-                    "areas": ["天津市", "市辖区", "河东区"]
+                    "name": "自动化联系人01",
+                    "phone": "15512344444"
                 }
             ],
-            "level": 1,
-            "name": createName,
-            "owner":"13636035190",
-            "phone": "",
-            "receiveList": [
-                {
-                    "address": "甘肃贯连内蒙古，内蒙古去哪儿都方便",
-                    "city": "庆阳市",
-                    "county": "华池县",
-                    "province": "甘肃省",
-                    "areas": ["甘肃省", "庆阳市", "华池县"]
-                }
-            ],
-            "remark": "这事超长的备注。。。（）（）（）（）（）（）（）（）（）（）（）"
-                      "（）（）（）（）（）（）（）（）（）（）（）（）（）#￥%……&*（）—————————————————————————————————————————"
-                      "—————————————————————————————————！！！！！！！！！！！！！！！！！！！！！！！！righting《 的我看就不"
-                      "打空间大把我答辩机会不放假无法解开方便未接！这事超长的备注。。。（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（）（1）"
+            "owner": "马兴超",
+            "countryId": "10",
+            "name": demo[0],
+            "type": demo[1],
+            "industryId": "4",
+            "areaId": "120000000000",
+            "areaName": "天津市",
+            "address": "修改了国家等区域信息；；；",
+            "relatedBusinessId": "1773548333945917443",
+            "contacts": "自动化联系人01",
+            "countryName": "中国"
         }
         # print(data)
         data = json.dumps(data)

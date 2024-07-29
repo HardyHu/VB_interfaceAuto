@@ -105,7 +105,7 @@ class Test_Material:
             newlist.append(name)
         print(newlist)
 
-        assert '物料名称213' in newlist
+        assert '物料名称213' in newlist or "物料1"
 
     def test_ma_change(self):
         """

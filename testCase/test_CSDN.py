@@ -11,8 +11,8 @@ from bs4 import BeautifulSoup
 url = "https://blog.csdn.net/qq_17195161"
 
 headers = {
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 '
-                  '(KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64)'
+                  ' AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.289 Safari/537.36'
 }
 article_url_final = 'https://blog.csdn.net/qq_17195161/article/details/130194374'  # OS重装python
 article_url = 'https://blog.csdn.net/qq_17195161/article/details/128528883'  # scrcpy（中）
@@ -24,7 +24,7 @@ log = logging.getLogger(__name__)
 def title_output():
     res_1 = requests.get(url=url, headers=headers)
     bs = BeautifulSoup(res_1.text, 'lxml')
-    return bs.title.text
+    return bs.text    # .title
 
 
 def request_article(add_url):
@@ -54,7 +54,7 @@ def request_article(add_url):
 def test_queue_title():
     log.info("print title name...")
     print('\n确认网络状态中：无报错则网络正常，有报错则需校验相应参数和网络！')
-    assert "CSDN博客" in title_output()
+    assert "开河大大" in title_output()
 
 
 if __name__ == "__main__":
@@ -62,5 +62,5 @@ if __name__ == "__main__":
 
     # print(title_output())
     request_article(article_url_final)
-
+    
     request_article(article_url_backup)

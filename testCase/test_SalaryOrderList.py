@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
 
 """
-197PLM的销售订单接口处理
+197ISC系统的
+销售订单接口处理
 涉及列表查询、新增、审核、关闭、结案、编辑、业务状态查询等操作
 author_Hardy
 """
@@ -12,7 +13,6 @@ import pytest
 import requests
 
 from user.file_operation import ymlOperation
-
 
 get_token = ymlOperation.read_yaml()['197_Env_Test'].get('197_token')
 # 切换项目
@@ -35,13 +35,14 @@ headers = {
 def deal_root():
     search_operate = get_host + 'salaryOrder/page'  # remember to change main url
     add_op = get_host + 'salaryOrder/add'
-    order_approve = get_host + 'salaryOrder/approve'
+    order_approve = get_host + 'salaryOrder/approve'  # 审批操作的接口
     close_op = get_host + 'salaryOrder/close'
     closeCase = get_host + 'salaryOrder/closeCase'
     edit_op = get_host + 'salaryOrder/edit'
     itemStatus = get_host + 'salaryOrder/itemStatus'
+    order_disApprove = get_host + 'salaryOrder/disApprove'  # 反审操作
 
-    return search_operate, add_op, order_approve, close_op, closeCase, edit_op, itemStatus
+    return search_operate, add_op, order_approve, close_op, closeCase, edit_op, itemStatus, order_disApprove
 
 
 def setup():
@@ -162,7 +163,7 @@ def test_add(orgName, billDate, customerCode, customerName, currencyCode, curren
     assert contentAdd['code'] == 200
 
 
-def test_itemStatus():
+def test_itemStatus0():
     resp = requests.get(deal_root()[6], headers=headers, timeout=10)
     print(resp.text)
     # 将收集的响应值放入key值，检验value，可以逐个校验
@@ -172,7 +173,7 @@ def test_itemStatus():
     assert TOBE_DELIVERY == '待交货'
 
 
-def test_itemStatus():
+def test_itemStatus1():
     resp = requests.get(deal_root()[6], headers=headers, timeout=10)
     print(resp.text)
     # 将收集的响应值放入key值，检验value，可以逐个校验
@@ -182,7 +183,7 @@ def test_itemStatus():
     assert PARTIAL_DELIVERY == '部分交货'
 
 
-def test_itemStatus():
+def test_itemStatus2():
     resp = requests.get(deal_root()[6], headers=headers, timeout=10)
     print(resp.text)
     # 将收集的响应值放入key值，检验value，可以逐个校验
@@ -192,7 +193,7 @@ def test_itemStatus():
     assert IN_DELIVERY == '交货中'
 
 
-def test_itemStatus():
+def test_itemStatus3():
     resp = requests.get(deal_root()[6], headers=headers, timeout=10)
     print(resp.text)
     # 将收集的响应值放入key值，检验value，可以逐个校验
@@ -202,7 +203,7 @@ def test_itemStatus():
     assert CLOSED == '已关闭'
 
 
-def test_itemStatus():
+def test_itemStatus4():
     resp = requests.get(deal_root()[6], headers=headers, timeout=10)
     print(resp.text)
     # 将收集的响应值放入key值，检验value，可以逐个校验
@@ -210,6 +211,45 @@ def test_itemStatus():
     CLOSE_CASE = response['data']['CLOSE_CASE']
 
     assert CLOSE_CASE == '已结案'
+
+
+@pytest.mark.flaky(reruns=2, reruns_delay=2)
+def test_ISC_approve():
+    """审核：
+    # 轮换值，查出数据如果是已审核，则进行反审操作，如果是待审核，则直接审核通过。以返回值为200检验审核通过
+    """
+    #  对单号SD0320240710002 进行查询
+    # global finalRes
+    params = {
+        "currentPageSize": 10,
+        "currentPage": 1,
+        "billCode": "SD0320240710002"
+        # "searchWord": "",
+        # "status": ""
+    }
+    resp = requests.post(deal_root()[0], headers=headers, data=json.dumps(params))  # , timeout=10
+    print(resp.text)
+    content = json.loads(resp.text)
+    checkStatus = content["data"]["records"][0]["statusName"]
+
+    preUrl = deal_root()[7]
+    if checkStatus == "待审核":
+        preUrl = deal_root()[2]
+
+    print(f"此时待操作的是《{checkStatus}》 与 {preUrl} 《地址》.")
+    #  即单号SD0320240710002 的ID，切记一定要与上方查询的数据一致
+    data = {
+        "ids": [
+            "1810735669148745730"
+        ]
+    }
+    try:
+        if preUrl is not None:
+            finalRes = requests.post(preUrl, headers=headers, data=json.dumps(data))
+    finally:
+        pass
+
+    assert json.loads(finalRes.text)["code"] == 200
 
 
 if __name__ == '__main__':
